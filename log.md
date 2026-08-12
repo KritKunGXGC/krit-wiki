@@ -463,3 +463,9 @@ This is an append-only chronological log of all operations performed on this wik
   - `.github/workflows/deploy-site.yml` → build (Quartz) แล้ว force-push ไป branch `gh-pages` (GITHUB_TOKEN + contents: write, เพิ่ม .nojekyll)
   - commit `35c85de` — gh-pages branch ถูกสร้างสำเร็จ (workflow run success, index.html 41KB)
 - เหลือขั้นตอนสุดท้าย: สลับ Pages source ไป "Deploy from a branch: gh-pages /" ผ่าน gh API (PUT pages build_type=legacy) — ทำครั้งเดียว
+
+## [2026-08-12] ops | GitHub Pages: RESOLVED — live at correct URL (branch deploy active)
+- **ต้นตอ 404 ที่ไล่กันมาหลายชั่วโมง = พิมพ์ URL ผิด** (`kritkunxgxc` ≠ `kritkungxgc`) — host ที่ผิดไม่ใช่ของบัญชีนี้ GitHub เลยตอบ "Site not found" ตลอด; URL จริงได้จาก `html_url` ของ Pages API: `https://kritkungxgc.github.io/krit-wiki/`
+- สถานะสุดท้าย (ตรวจยืนยันครบทุกมุม — direct, external network, 4 edge IP bypass DNS): **HTTP 200 ครบ** + landing ใหม่ render สมบูรณ์ (stat 13/9/11/9/13/6, tag cloud, hero badges)
+- Pages API: `build_type: legacy` · `source: {gh-pages, /}` · `status: built` · `custom_404: true` — branch deploy ทำงานแล้ว (workflow build → force-push gh-pages → legacy build ของ GitHub)
+- บทเรียน: ห้ามพิมพ์ Pages URL เอง — ใช้ `gh api repos/OWNER/REPO/pages --jq .html_url` หรือ `pages/deployments` เสมอ
