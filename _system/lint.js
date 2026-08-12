@@ -218,7 +218,7 @@ try {
 // [13] notes/ path integrity — references to notes/ from AI-maintained files must resolve
 // Capture only delimited tokens (backtick / quote / wikilink) so prose mentions like "notes/" don't false-positive
 const notesRefErrors = [];
-const maintainedFiles = [...wikiPages, 'index.md'].filter(f => fs.existsSync(f));
+const maintainedFiles = [...wikiPages, 'index.md'];
 const notesRe = /[`"'\[[]notes\/[^`"'\]]+/g;
 for (const f of maintainedFiles) {
   const c = read(f);
