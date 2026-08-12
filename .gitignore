@@ -1,0 +1,5 @@
+# Smart Connections runtime data (embeddings/logs — churns constantly, not meaningful history)
+.smart-env/
+
+# Obsidian UI state (rewritten on every window move / layout change)
+.obsidian/workspace.json

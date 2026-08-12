@@ -292,3 +292,33 @@ This is an append-only chronological log of all operations performed on this wik
 - เพิ่ม `cssclasses: notes-beauty` ให้สำเนา `notes/ingested/` 10 ไฟล์ + `notes/README.md` (index Dataview)
 - เปิดใช้ snippet ใน `appearance.json` (enabledCssSnippets + notes-beauty) — ตอน Obsidian ปิด เพื่อกัน config ถูกเขียนทับ
 - ไอเดียต่อยอดจากความรู้ที่ ingest ไว้ (CyanVoxel Vault System: class-based CSS ต่อโน้ต)
+
+## [2026-08-12] upgrade | 10x overhaul (6 ชุดตามที่ผู้ใช้เลือก)
+### 1. Vault Doctor (lint.js v2)
+- อัปเกรด lint.js เป็น 12 การตรวจ: dead links, orphans, frontmatter, categories, event date format (YYYY-MM-DD), **canvas JSON validation** (ids unique/dangling edges), **duplicate titles**, **duplicate basenames**, **unlinked raw files**, **stale heading anchors**, title≠filename (warn), ข้าม notes/ — รายงานสรุปพร้อมสี/emoji
+- รองรับลิงก์ `.base` (Bases) ใน resolve
+- แก้จริง 1 จุด: `wiki/events/1945-07 As We May Think Published` date `1945-07` → `1945-07-01`
+- ผล: 58 หน้า / errors 0 / warnings 20 (ข้อมูลล้วน)
+### 2. Templater Full Suite
+- สร้าง templates: `_system/TEMPLATE Concept/Source/Event/Daily Note/Quick Capture.md` + `notes/daily/` + `notes/inbox/` (มี README)
+- ตั้งค่า Templater data.json: trigger on new file creation, auto_jump_to_cursor, folder_templates (notes/daily → Daily Note, notes/inbox → Quick Capture)
+### 3. Bases Database
+- `wiki/Bases/Wiki Library.base` (ทุกหน้า wiki จัดกลุ่มตามหมวด + Timeline events) + `wiki/Bases/Notes Library.base` (โน้ตส่วนตัว) — Bases core plugin เปิดใช้อยู่แล้ว
+### 4. Deepen Knowledge
+- ขยาย 5 concepts: Zettelkasten (+ตารางเปรียบเทียบ Zettelkasten/PARA/FINVA + แผนที่ notes/↔wiki/), Memex (+เชื่อมโยง vault นี้), Associative Trails (+Obsidian linking), Vibe Coding (+ข้อควรระวัง/prompt injection), Bases (+ใน vault นี้)
+- สร้าง concept ใหม่ [[wiki/concepts/Obsidian]] (hub กลุ่ม Obsidian จาก 5 raw sources) + cross-link จาก Free Software Stack synthesis + wiki/README
+### 5. Vault Manual
+- สร้าง [[wiki/memory/Vault Manual]] — คู่มือผู้ใช้ภาษาไทย: โครงสร้าง vault, เริ่มต้นใช้, capture (daily/quick), ขอ AI ช่วย, เครื่องมือ, กติกา
+### 6. index.md 2.0
+- แก้บั๊ก `--ctp-*` (Blue Topaz ไม่มีตัวแปรนี้ → การ์ดไม่มีสี) → hex catppuccin ตรงๆ ใช้ได้ทุกธีม
+- เพิ่ม: การ์ด+ส่วน **Notes ของคุณ** (Dataview จาก notes/), ลิงก์ Vault Manual + Bases ใน Start Here, callout ค้นหา (#ingested/#journal/#inbox)
+### 7. Git + ตรวจสอบ
+- **git init + initial commit** (`8dc86c5`) — พบว่า vault ยังไม่เป็น git repo ทั้งที่ obsidian-git ตั้ง auto-backup ไว้ (backup เงียบไม่เคยทำงาน!) → ตอนนี้ backup ทำงานได้จริง
+- Vault Doctor: 58 หน้า, 1 canvas, 10 raw, errors 0
+
+## [2026-08-12] maintenance | Deep verification + fixes (อัตโนมัติระหว่างผู้ใช้ไม่อยู่)
+- ตรวจ JSON configs 12 ไฟล์ → valid ครบ
+- **เจอ + แก้บั๊ก Templater**: เวอร์ชันติดตั้ง 2.25.0 ใช้ `trigger_on_file_creation_mode` = "folder"/"regex"/"none" (ไม่ใช่ "new-file-created" ที่ตั้งไว้ตอนแรก) — ถ้าไม่แก้ daily note/quick capture จะไม่ trigger template เลย; แก้เป็น "folder" แล้ว (folder_templates {folder,template} ตรง schema, auto_jump_to_cursor มี)
+- วิจัย docs ยืนยัน: `tp.date.now(format, offset, reference, reference_format)` ถูกต้อง; Bases schema (filters and/or/not, views type/name/limit/groupBy/filters/order, formulas Duration .days, properties displayName) ถูกต้อง; obsidian-git local-only backup ทำงาน headless ได้ (autoSaveInterval 10, commitMessage ตั้งแล้ว, identity ตั้งแล้ว)
+- เพิ่ม `.gitignore`: ข้าม `.smart-env/` + `.obsidian/workspace.json` (กัน noise commits จาก runtime data)
+- สร้าง `notes/2026-08-12 AI Session Briefing.md` — สรุปสำหรับผู้ใช้กลับมา พร้อม checklist

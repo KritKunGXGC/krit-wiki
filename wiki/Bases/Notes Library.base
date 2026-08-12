@@ -5,7 +5,7 @@ filters:
     - 'file.basename != "README"'
 
 formulas:
-  folder_label: 'if(file.folder == "notes", "โน้ตของฉัน", if(file.folder == "notes/daily", "Daily", "Inbox/อ่าน"))'
+  folder_label: 'if(file.folder == "notes", "โน้ตของฉัน", if(file.folder == "notes/daily", "Daily", if(file.folder == "notes/ingested", "สำเนาอ่าน", "Inbox")))'
 
 properties:
   formula.folder_label:
