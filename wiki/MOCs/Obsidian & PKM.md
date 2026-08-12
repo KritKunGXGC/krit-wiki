@@ -8,7 +8,7 @@ tags:
 sources: []
 last_updated: 2026-08-12
 ---
-# Obsidian & PKM MOC
+# Obsidian & PKM
 
 ## Overview
 ศูนย์รวมองค์ความรู้เกี่ยวกับ Obsidian และ Personal Knowledge Management (PKM) — ตั้งแต่การจัดโครงสร้างโฟลเดอร์ ระบบปลั๊กอิน ไปจนถึงการผสาน AI agent เข้ากับ vault
