@@ -455,3 +455,11 @@ This is an append-only chronological log of all operations performed on this wik
 - **แก้บั๊กเก่าใน transform.mjs**: `relToRoot` ใช้กับ path ใน content dir ผิด root → สถิติ/แท็ก/ล่าสุดเป็น 0 มาตลอดบน Windows (ซ่อนอยู่เพราะ CI Linux ใช้ `includes()` ผ่าน) — แก้ด้วย `relToContent` + ครอบ tag ให้ไม่มีเครื่องหมายคำพูด
 - **CI**: bump actions ใหม่ล่าสุด (checkout@v7, setup-node@v7, upload-pages-artifact@v5, deploy-pages@v5) — ล้าง Node 20 deprecation warnings
 - ทดสอบ local build + browser check 8/8 ผ่าน (hero gradient, สถิติจริง, tag cloud, folder page, content-meta, explorer emoji, dark mode, search, 0 console errors)
+
+## [2026-08-12] ops | GitHub Pages recovery: DNS theory disproven → switched to branch deploy
+- ตรวจยืนยัน 3 มุม (4 edge IP bypass DNS, เครือข่ายภายนอก, cache-buster + browser headers): เว็บยัง 404 "Site not found" จริง — ทฤษฎี "DNS cache ค้างบนเครื่อง" จาก opencode **ไม่ถูกต้อง** (DNS ท้องถิ่น + public DoH resolve ถูกต้อง)
+- สาเหตุแท้จริง: backend GitHub Pages ค้างสถานะหลัง bump actions เป็น upload-pages-artifact@v5/deploy-pages@v5 (commit 8c803fb) — revert กลับ v3/v4 + ลบ environment + re-register ผ่าน API แล้วก็ไม่หาย (deploy-pages รายงาน success แต่ CDN origin ตอบ Site not found)
+- ตัดสินใจสลับสถาปัตยกรรม deploy เป็น **branch deploy** (ระบบ legacy ที่เสถียร ไม่พึ่ง workflow-mode backend):
+  - `.github/workflows/deploy-site.yml` → build (Quartz) แล้ว force-push ไป branch `gh-pages` (GITHUB_TOKEN + contents: write, เพิ่ม .nojekyll)
+  - commit `35c85de` — gh-pages branch ถูกสร้างสำเร็จ (workflow run success, index.html 41KB)
+- เหลือขั้นตอนสุดท้าย: สลับ Pages source ไป "Deploy from a branch: gh-pages /" ผ่าน gh API (PUT pages build_type=legacy) — ทำครั้งเดียว
