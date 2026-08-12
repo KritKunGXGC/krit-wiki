@@ -404,3 +404,26 @@ This is an append-only chronological log of all operations performed on this wik
 - **Tightened dead-link resolution** — เดิม `rootPages` ใช้ `walk('.')` ทำให้ `raw/`, `_system/`, `.agents/`, `.obsidian/`, `.claude/` เข้ามาใน link resolution (ลิงก์จาก wiki/ ไปนอก wiki/ resolve เงียบๆ ไม่โดนจับ) → จำกัดเหลือ **wiki/ (ทั้งหมด) + notes/ (.md) + root .md (index/log/AGENTS)** เท่านั้น — ลิงก์ไป raw//_system/ ฯลฯ กลายเป็น DEAD LINK ตาม convention ของ vault
 - **Negative test ผ่าน:** สร้างไฟล์ชั่วคราวที่มี `[[raw/README]]` + `[[_system/TEMPLATE.md]]` → lint จับ DEAD LINK 2 อันจริง; ลบไฟล์แล้วกลับ 0
 - ตรวจ: lint 58 หน้า / errors 0 / [14]=0 / dead links 0 — ไม่มี violation เดิม (เป็นแค่ safety net ใหม่)
+
+## [2026-08-12] content | Synthesis deepening #1: Programming Languages Explained (34→45 บรรทัด)
+- เพิ่มมุมเปรียบเทียบ: ระบบนิเวศภาษา (Just Explained) × ระบบนิเวศแอปฟรี (Asylum) — โครงสร้าง "Every X Explained" เดียวกัน คนละชั้น (สร้าง vs ใช้เครื่องมือ), เห็นพ้องที่ "เลือกตามงาน", ต่างที่อายุขัย (C อายุ 50 ปี vs แอปอายุสั้น), มองข้ามร่วมกันที่ vendor lock-in
+- ขยาย Vibe Coding ลึก: ภาษา AI-friendly = type-safe (TS ครองเพราะ AI เดาผิดน้อยลง) + "ภาษาแรก" ในยุค AI อาจเป็น "ภาษาที่ AI เขียนแล้วคนตรวจได้"
+- **แก้ลิงก์ Memex ที่ยืดเกิน**: เดิมอ้าง "Tim Berners-Lee ได้แรงบันดาลใจจาก Memex" โดยตรง → เปลี่ยนเป็นหมายเหตุระบุชัดว่าเป็นบริบทประวัติศาสตร์ภายนอก source
+- เพิ่ม Open Questions (41% โค้ดจาก AI → เรียนภาษาแรกเปลี่ยนไหม?)
+
+## [2026-08-12] content | Synthesis deepening #2: Essential Obsidian Plugins (46→68 บรรทัด)
+- **เพิ่ม tension หลัก: "6 ตัวพอ" (Focus Café) vs 26 ตัวใน vault นี้** — ตรวจสอบจาก `.obsidian/community-plugins.json` จริง: 3/6 ที่แนะนำติดตั้งแล้ว (Omnisearch/Recent Files/Tag Wrangler), 3 ตัวที่เหลือ "ถูกคัดออกตามเกณฑ์เอง" (Sort and Permute/Settings Search/Paste Image Rename — ใช้ไม่บ่อยกับโน้ตวิกิ)
+- วิเคราะห์ว่า 26 ตัว ไม่ได้ขัดปรัชญา: มีชั้น automation (Linter/Git/Templater/Dataview/Bases) ที่ "ซ่อนอยู่" ไม่ใช่ plugins ใช้งานประจำวัน — vault แบบ LLM-managed ต้องการชั้นนี้
+- เพิ่มเปรียบเทียบปรัชญาตรงข้าม: Focus Café (น้อยยิ่งดี) × CyanVoxel (overkill is a feature) — เห็นพ้องที่เกณฑ์คัดเลือก ต่างที่เป้าหมาย
+
+## [2026-08-12] content | Synthesis deepening #3: ElevenLabs Synthesis (44→75 บรรทัด)
+- **ยืนยันชื่อ ElevenAgents จาก raw source** (หน้าเว็บ elevenlabs.io ใช้ชื่อนี้โดยตรง) + หมายเหตุไว้ในหน้า
+- **เชื่อม ElevenAgents เข้าคลัสเตอร์ agentic AI**: ตารางเทียบ 3 agents (ElevenAgents/OpenClaw/Hermes) — modality, งาน, สภาพแวดล้อม, guardrails, undo — วิเคราะห์ว่า ElevenAgents เป็น agent "ปิด" ที่ปลอดภัยสุดแต่ไม่เป็นเจ้าของ, เป็นตัวเดียวที่มีตลาด B2B จริง (Deliveroo/Meesho/Cars24)
+- **เพิ่ม tension Dubbing v2 vs Shadowing**: AI แปลเสียงเก่งขึ้น (Dubbing) ลดแรงจูงใจฝึกฟัง/พูดจริง (Shadowing) — "เครื่องมือ AI ไม่แทนที่การฝึก แต่เปลี่ยนสิ่งที่ต้องฝึก"
+- เพิ่ม Open Questions + ระบุจุดที่นอกขอบเขต source (guardrails ที่ scale จริง, กฎหมาย voice cloning)
+- **แก้ bug wikilink ในตาราง**: `\|` escape ทำให้ lint ตีความผิด → ย้ายลิงก์ออกจากตารางเป็นข้อความใต้ตาราง
+
+## [2026-08-12] content | Synthesis deepening #4: Free Software Stack (37→61 บรรทัด)
+- **เพิ่มหัวข้อ "Obsidian อยู่ในสแตกนี้จริงไหม?" (verified ไม่ใช่ common knowledge)**: Obsidian core = proprietary/closed-source, ฟรีทุกจุดประสงค์ตามนโยบาย 2025 — อ้างอิง [obsidian.md/license](https://obsidian.md/license) + [blog free-for-work](https://obsidian.md/blog/free-for-work/); สิ่งที่เปิด = รูปแบบข้อมูล (Markdown) + API/Web Clipper/Importer (MIT)
+- วิเคราะห์ "ฟรี(price) vs เปิด(freedom)" เป็นคนละมิติ + "ข้อมูลเปิด" ชดเชย "โค้ดปิด" (ต่างจาก Notion/Google Docs ที่ lock-in) + ระบุทางเลือก FOSS จริง (Logseq/Joplin) ว่าเป็นข้อมูลนอกขอบเขต source
+- เพิ่มเปรียบเทียบสแตกแอป×ภาษา (อายุขัยต่างกัน, lock-in ต่างกัน) + pattern "เลือกน้อยแต่ดี" ที่เกิดซ้ำ 3 sources (Asylum/Focus Café)

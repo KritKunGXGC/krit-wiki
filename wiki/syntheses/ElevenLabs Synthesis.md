@@ -36,13 +36,15 @@ last_updated: 2026-08-12
 ### ElevenAgents ในบริบท agentic AI (เชื่อมโยงที่ยังไม่เคยทำ)
 ElevenAgents ไม่ได้เป็นแค่ "ฟีเจอร์เสียง" — มันคือ **agent ตัวหนึ่งในคลัสเตอร์ agentic AI ของ wiki นี้** พอเทียบกับ 2 agent อีกตัวจะเห็นจุดยืนที่ต่างกัน:
 
-| มิติ | **ElevenAgents** | **OpenClaw** (ดู [[wiki/syntheses/OpenClaw Synthesis|OpenClaw Synthesis]]) | Hermes-in-Obsidian |
+| มิติ | **ElevenAgents** | **OpenClaw** | **Hermes-in-Obsidian** |
 |---|---|---|---|
 | Modality | เสียง/แชท (omnichannel) | แอปแชท (WhatsApp, Telegram...) | Obsidian (โน้ต) |
 | งานหลัก | CX/บริการลูกค้า (refund, support) | จัดการชีวิตดิจิทัลวงกว้าง | ดูแล knowledge base |
 | สภาพแวดล้อม | Cloud (ของ ElevenLabs) | เครื่อง/VPS ของคุณ | Docker + vault |
 | Guardrails | มีในตัว (policy-based) | ต้องตั้งเอง (VPS, skills) | 3 ชั้น (skill/Docker/mask) |
 | ย้อนกลับ | ไม่ได้พูดถึง | ยาก (โลกภายนอก) | **Git undo ได้** |
+
+*(OpenClaw = [[wiki/syntheses/OpenClaw Synthesis|OpenClaw Synthesis]], Hermes = [[wiki/syntheses/OpenClaw vs Hermes-in-Obsidian|OpenClaw vs Hermes-in-Obsidian]])*
 
 **ข้อสังเกตเชิงวิเคราะห์:**
 - **ElevenAgents เป็น agent "แบบปิด" ที่ปลอดภัยสุดใน 3 ตัว** — guardrails/analytics มีในตัว ผู้ใช้ไม่ต้องตั้งค่าความปลอดภัยเอง (ต่างจาก OpenClaw ที่ต้องคุม VPS เอง) แต่ก็แลกกับ**การไม่เป็นเจ้าของ** (โค้ด/ข้อมูลอยู่ใน cloud ของ ElevenLabs)
