@@ -352,3 +352,10 @@ This is an append-only chronological log of all operations performed on this wik
 - (ตามที่ผู้ใช้เลือก) สร้าง `notes/private/` และย้ายโน้ต 2 อัน: `My English Learning Routine.md` + `2026-08-12 AI Session Briefing.md` — โน้ตส่วนตัวอยู่ด้วยกัน; อัปเดต `sources:` ใน `wiki/sources/My English Learning Routine.md` → `notes/private/...` + ปรับประโยคใน notes/README.md
 - ผู้ใช้เลือก **ไม่** ซ่อน dot-folders (`.agents/`, `.claude/`, `.smart-env/`) ใน file explorer — คงไว้แบบเดิม
 - ตรวจ: lint 58 หน้า / errors 0 / dead links 0 / orphans 0
+
+## [2026-08-12] structure | Remove date prefix from notes/ingested/ filenames (ตามคำขอ)
+- ผู้ใช้เห็นว่า prefix วันที่ (`2026-08-12 ...`) รกและซ้ำกันหมด (10 ไฟล์เป็นวันเดียวกัน)
+- Rename 10 ไฟล์ใน `notes/ingested/`: ลบ prefix `2026-08-12 ` → `ชื่อล้วน` (เช่น `Every Free App You Actually Need.md`) — วันที่ยังอยู่ใน content header ของแต่ละไฟล์ (ผู้เขียน/วันที่เผยแพร่/ลิงก์)
+- อัปเดตกติกาชื่อไฟล์: AGENTS.md (2 จุด: Directory Structure + Ingestion Workflow) · notes/README.md · notes/ingested/README.md → `<Title>.md` (ไม่มีวันที่; กรณีชื่อชนให้ต่อท้าย suffix เช่น `-2`)
+- ไม่มีหน้า wiki ใดอ้างอิงชื่อไฟล์เหล่านี้ (อ้างแค่ระดับโฟลเดอร์) — ลิงก์ไม่พัง
+- ตรวจ: lint 58 หน้า / errors 0 / dead links 0 / orphans 0
