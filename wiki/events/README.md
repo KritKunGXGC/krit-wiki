@@ -28,6 +28,7 @@ This folder records **chronological occurrences** — key historical dates, cont
 - [[wiki/events/2026-07-01 What is OpenClaw Published|2026-07-01 · What is OpenClaw Published]] — วิดีโอแนะนำ OpenClaw โดย Tech With Lucy
 - [[wiki/events/2026-07-23 Obsidian Agentic AI Workflow Published|2026-07-23 · Obsidian Agentic AI Workflow]] — วิดีโอ Hermes+Obsidian โดย Wanderloots
 - [[wiki/events/2026-08-08 Every Programming Language Explained Published|2026-08-08 · Every Programming Language Explained]] — วิดีโอภาษาโปรแกรม โดย Just Explained
+- [[wiki/events/2025-08-15 8 Obsidian Plugins Published|2025-08-15 · 8 Obsidian Plugins]] — วิดีโอ 8 plugins S-tier โดย Mike Schmitz
 
 > หมายเหตุ: `raw/Note Taking & Research Assistant Powered by AI.md` และ `raw/The Free Obsidian Journal that took 400 hours to build.md` ไม่มีวันที่เผยแพร่ใน source จึงยังไม่มี event page (รอข้อมูลเพิ่มเติม)
 

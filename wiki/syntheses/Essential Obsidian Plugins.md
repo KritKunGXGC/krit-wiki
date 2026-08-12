@@ -55,6 +55,20 @@ last_updated: 2026-08-12
 - CyanVoxel: "Overkill is a feature — 17 ตัว ถ้าสนุกก็ดี" ([[wiki/syntheses/CyanVoxel Vault System|CyanVoxel Vault System]])
 - ทั้ง 2 เห็นพ้องกันใน **เกณฑ์คัดเลือก** (ต้อง unobtrusive/เพิ่มคุณภาพชีวิต) แต่**ต่างกันที่เป้าหมาย**: Focus Café เน้นความสงบในการเขียน ส่วน CyanVoxel เน้นความสนุกและความเป็นส่วนตัว — vault นี้ (26 ตัว) อยู่กลางๆ: automation เยอะตามแบบ CyanVoxel แต่ plugins ที่ "ผู้ใช้เห็น" ก็คัดตามเกณฑ์ Focus Café
 
+### มุมมองที่ 3: Mike Schmitz — "ติดตั้งเยอะได้ แต่พึ่งพาแค่ไม่กี่ตัว" (S-tier)
+[[wiki/sources/8 Obsidian Plugins That I Can't Live Without|วิดีโอของ Mike Schmitz]] (2025-08-15) เพิ่มมิติใหม่ที่ 2 ฝ่ายก่อนหน้าไม่ได้พูดถึง — เขา**ติดตั้ง 39 ตัว** (มากกว่า CyanVoxel เสียอีก) แต่ยอมรับเองว่าส่วนใหญ่ "nice-to-have" — **มีแค่ 8 ตัวที่ S-tier** (ขาดไม่ได้จริง): Calendar, Periodic Notes, Dataview, Keep the Rhythm, Templater, QuickAdd, Tasks, Actions URI
+
+| มิติ | Focus Café | CyanVoxel | **Mike Schmitz** |
+|---|---|---|---|
+| จำนวนที่ติดตั้ง | 6 | 17 | **39** |
+| แกนตัดสิน | เกณฑ์ 3 ข้อ (unobtrusive/QoL) | "Overkill is a feature" | **Tier ranking — แยก "มี" กับ "พึ่งพาจริง"** |
+| จุดยืน | ความสงบในการเขียน | ความสนุก/ความเป็นส่วนตัว | **PKM stack — plugins ต้อง fit กับ workflow** |
+
+**ข้อสรุปเชิงวิเคราะห์ (เชื่อมกับ vault นี้):**
+- **ทั้ง 3 เห็นพ้องกันใน PSA เดียว** — Focus Café กับ Mike Schmitz ต่างพูดว่า "ใช้ให้น้อยที่สุดเท่าที่จำเป็น" — แต่ Schmitz พิสูจน์ว่า "จำเป็น" ไม่ได้แปลว่า "ติดตั้งน้อย": เขามี 39 แต่พึ่งพา 8
+- **นี่ตอบคำถาม tension "6 ตัว vs 26 ตัว" ของ vault นี้ได้ตรงจุด** — ตัวชี้วัดที่แท้จริงไม่ใช่จำนวนที่ติดตั้ง (Focus Café 6, Krit Wiki 26, Schmitz 39) แต่คือ **จำนวนที่ workflow พึ่งพาจริง** (Schmitz: 8) — การวิเคราะห์เดิมที่ว่า vault นี้มีชั้น automation "ซ่อนอยู่" (Linter/Git/Templater/Dataview/Bases) สอดคล้องกับแนวคิดนี้
+- **ความต่างที่แท้จริงคือปรัชญาการเลือก:** Focus Café คัดด้วยเกณฑ์คุณภาพชีวิต, CyanVoxel คัดด้วยความสนุก, Schmitz คัดด้วย **"fit เข้ากับ PKM stack / workflow"** — มุมมองที่ 3 นี้เพิ่มเกณฑ์ที่อิงระบบ (system-fit) ซึ่ง 2 ฝ่ายแรกมองข้าม
+
 ### การประยุกต์ใช้
 - ติดตั้งเฉพาะที่ "ต้องใช้จริง" ตามเกณฑ์ 3 ข้อ — ไม่ใช่ติดตามกระแส
 - จัดการความเสี่ยง support หยุด: เลือกปลั๊กอินยอดนิยม/มี社区ใหญ่ และหมั่นตรวจว่า vault ยังเป็น Markdown บริสุทธิ์

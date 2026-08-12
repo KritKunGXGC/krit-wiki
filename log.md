@@ -427,3 +427,10 @@ This is an append-only chronological log of all operations performed on this wik
 - **เพิ่มหัวข้อ "Obsidian อยู่ในสแตกนี้จริงไหม?" (verified ไม่ใช่ common knowledge)**: Obsidian core = proprietary/closed-source, ฟรีทุกจุดประสงค์ตามนโยบาย 2025 — อ้างอิง [obsidian.md/license](https://obsidian.md/license) + [blog free-for-work](https://obsidian.md/blog/free-for-work/); สิ่งที่เปิด = รูปแบบข้อมูล (Markdown) + API/Web Clipper/Importer (MIT)
 - วิเคราะห์ "ฟรี(price) vs เปิด(freedom)" เป็นคนละมิติ + "ข้อมูลเปิด" ชดเชย "โค้ดปิด" (ต่างจาก Notion/Google Docs ที่ lock-in) + ระบุทางเลือก FOSS จริง (Logseq/Joplin) ว่าเป็นข้อมูลนอกขอบเขต source
 - เพิ่มเปรียบเทียบสแตกแอป×ภาษา (อายุขัยต่างกัน, lock-in ต่างกัน) + pattern "เลือกน้อยแต่ดี" ที่เกิดซ้ำ 3 sources (Asylum/Focus Café)
+
+## [2026-08-12] ingest | raw/8 Obsidian Plugins That I Can't Live Without.md
+- Ingest วิดีโอ Mike Schmitz (Practical PKM, เผยแพร่ 2025-08-15) — 8 plugins S-tier จาก 39 ตัวที่ติดตั้ง: Calendar, Periodic Notes, Dataview, Keep the Rhythm, Templater, QuickAdd, Tasks, Actions URI (ตัวสำคัญสุด)
+- สร้าง 4 หน้า: [[wiki/sources/8 Obsidian Plugins That I Can't Live Without]] + entity [[wiki/entities/Mike Schmitz]] (resolve phantom wikilink จาก frontmatter raw) + event [[wiki/events/2025-08-15 8 Obsidian Plugins Published]] + reading copy `notes/ingested/Obsidian และ PKM/` (#ingested)
+- **ขยาย Essential Obsidian Plugins synthesis ด้วยมุมมองที่ 3**: ตารางเทียบ 3 ปรัชญา (Focus Café 6 ตัว / CyanVoxel 17 ตัว / Mike Schmitz 39 ตัวแต่พึ่งพา 8) — สรุปว่า "จำเป็น" ≠ "ติดตั้งน้อย"; ตอบ tension "6 vs 26 ตัว" ของ vault นี้ตรงจุด (ตัวชี้วัดจริง = จำนวนที่ workflow พึ่งพา); เพิ่มเกณฑ์เลือกแบบ system-fit (PKM stack) ที่ 2 ฝ่ายแรกมองข้าม
+- อัปเดต wiki/README.md (Entities/Events/Sources), events/README.md, MOC Hub description
+- ตรวจ: lint ผ่าน — 0 errors (RAW UNREFERENCED ของไฟล์นี้หายจาก warnings ด้วย)

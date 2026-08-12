@@ -65,6 +65,7 @@ Entity pages describe people, organizations, and tools.
 - [[wiki/entities/Tim Miller|Tim Miller]] — Author of the FINVA folder-structure article on Obsidian.rocks.
 - [[wiki/entities/Wanderloots|Wanderloots]] — YouTube creator; author of the Obsidian + Agentic AI workflow video.
 - [[wiki/entities/CyanVoxel|CyanVoxel]] — YouTube creator; vault tours + open-source CSS themes/snippets.
+- [[wiki/entities/Mike Schmitz|Mike Schmitz]] — YouTube creator (Practical PKM); plugin hygiene + PKM stack workflows.
 
 ## 4. Events
 
@@ -83,6 +84,7 @@ Entity pages describe people, organizations, and tools.
 - [[wiki/events/2026-07-01 What is OpenClaw Published|2026-07-01 · OpenClaw Published]]
 - [[wiki/events/2026-07-23 Obsidian Agentic AI Workflow Published|2026-07-23 · Agentic AI Workflow]]
 - [[wiki/events/2026-08-08 Every Programming Language Explained Published|2026-08-08 · Programming Languages]] — วิดีโอ Just Explained
+- [[wiki/events/2025-08-15 8 Obsidian Plugins Published|2025-08-15 · 8 Obsidian Plugins]] — วิดีโอ Mike Schmitz
 
 ## 5. Sources
 
@@ -98,6 +100,7 @@ Source pages hold processed raw material — transcripts, clipped articles, and 
 - [[wiki/sources/Every Programming Language Explained in 16 Minutes|Every Programming Language Explained in 16 Minutes]] — Overview of 12 programming languages + vibe coding.
 - [[wiki/sources/Form Function Fun - My Obsidian Vault Tour 2024|Form Function Fun - My Obsidian Vault Tour 2024]] — CyanVoxel vault tour: theming, 17 plugins, Zettelkasten × PARA.
 - [[wiki/sources/My English Learning Routine|My English Learning Routine]] — Personal note on a daily English practice routine (ingested from notes/).
+- [[wiki/sources/8 Obsidian Plugins That I Can't Live Without|8 Obsidian Plugins That I Can't Live Without]] — 8 S-tier plugins from 39 installed (Mike Schmitz).
 
 ## 6. Syntheses
 
