@@ -384,3 +384,10 @@ This is an append-only chronological log of all operations performed on this wik
 - **🟡 recent-files-obsidian/data.json:** runtime data ที่ถูกเขียนตลอด → `git rm --cached` + เพิ่มใน .gitignore (git status สะอาด ไม่มี noise)
 - **False positives ที่ตรวจแล้วไม่ใช่บั๊ก:** ลิงก์ตัวอย่างใน AGENTS.md/log/raw/_system templates (by design), wikilinks ใน notes/ + raw/ (resolve ด้วย basename ใน Obsidian — lint ข้ามโดยตั้งใจ), 12 warnings ของ lint (pattern ตั้งใจ: events ลงวันที่ + README)
 - ตรวจ: lint 58 หน้า / errors 0 / .obsidian JSON ทั้งหมด valid / git status สะอาด
+
+## [2026-08-12] upgrade | Vault Doctor v3: +plugin consistency +notes path integrity (14 เช็ค)
+- **[12] Plugin consistency** — ตรวจ community-plugins.json: ตัวที่ enable ต้องมีโฟลเดอร์ + manifest.json + data.json valid JSON; ตัวที่ติดตั้งแต่ไม่ enable = warning → จับได้แบบเดียวกับบั๊ก iconize ที่เพิ่งเจอ
+- **[13] Notes path integrity** — path ที่อ้าง `notes/...` จากไฟล์ที่ AI ดูแล (wiki/, index.md) ต้อง resolve ถึงไฟล์/โฟลเดอร์จริง (capture เฉพาะ token ใน backtick/quote/wikilink — ไม่มี false positive) → จับได้แบบเดียวกับบั๊ก path เก่าใน My English Learning Routine
+- **[14] (เดิม)** ข้าม notes/ ทั้งหมด — เนื้อหาใน notes/ ยังไม่ถูก lint (ตาม AGENTS.md)
+- ตรวจ: lint 58 หน้า / errors 0 / [12]=0 / [13]=0 / warnings 13 (เพิ่ม 1 อัน = raw ไฟล์ใหม่ที่ยังไม่ ingest)
+- **พบของจริงระหว่างตรวจ:** `raw/8 Obsidian Plugins That I Can't Live Without.md` (Mike Schmitz, 2025-08-15 — 8 essential plugins) — ยังไม่มีหน้า wiki → รอ ingest

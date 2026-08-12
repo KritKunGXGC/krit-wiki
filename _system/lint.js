@@ -17,7 +17,9 @@
  *   [9]  raw/ ไฟล์ที่ยังไม่ถูกอ้างอิงโดยหน้า wiki ใด
  *   [10] Stale heading anchors ([[page#heading]] ที่ heading ไม่มีจริง)
  *   [11] (WARN) ชื่อไฟล์ไม่ตรงกับ frontmatter title
- *   [12] ข้ามโฟลเดอร์ `notes/` ทั้งหมด (พื้นที่ส่วนตัวของผู้ใช้)
+ *   [12] Plugin consistency — ตัวที่ enable ต้องมีโฟลเดอร์+manifest.json, data.json ต้อง valid JSON; ตัวที่ติดตั้งแต่ไม่ enable = warn
+ *   [13] notes/ path integrity — path ที่อ้าง `notes/...` จากไฟล์ที่ AI ดูแล (wiki/, index.md) ต้อง resolve ถึงไฟล์/โฟลเดอร์จริง
+ *   [14] ข้ามโฟลเดอร์ `notes/` ทั้งหมด (พื้นที่ส่วนตัวของผู้ใช้ — ไม่ lint เนื้อหาใน notes/)
  */
 const fs = require('fs');
 const path = require('path');
@@ -184,6 +186,54 @@ for (const r of rawFiles) {
   }
 }
 
+// [12] plugin consistency — enabled plugins must be installed + valid
+const pluginErrors = [];
+try {
+  const cpPath = '.obsidian/community-plugins.json';
+  const pluginsDir = '.obsidian/plugins';
+  if (fs.existsSync(cpPath) && fs.existsSync(pluginsDir)) {
+    const enabled = JSON.parse(read(cpPath));
+    const installed = fs.readdirSync(pluginsDir).filter(d => fs.existsSync(path.join(pluginsDir, d, 'manifest.json')));
+    for (const p of enabled) {
+      const dir = path.join(pluginsDir, p);
+      if (!fs.existsSync(dir)) {
+        pluginErrors.push(`PLUGIN ENABLED BUT FOLDER MISSING: ${p}`);
+      } else if (!fs.existsSync(path.join(dir, 'manifest.json'))) {
+        pluginErrors.push(`PLUGIN MISSING MANIFEST: ${p}`);
+      } else {
+        const d = path.join(dir, 'data.json');
+        if (fs.existsSync(d)) {
+          try { JSON.parse(read(d)); } catch (e) { pluginErrors.push(`PLUGIN BAD data.json: ${p} (${e.message.split('\n')[0]})`); }
+        }
+      }
+    }
+    for (const p of installed) {
+      if (!enabled.includes(p)) warnings.push(`PLUGIN INSTALLED BUT DISABLED: ${p}`);
+    }
+  }
+} catch (e) {
+  pluginErrors.push(`PLUGIN CHECK FAILED: ${e.message.split('\n')[0]}`);
+}
+
+// [13] notes/ path integrity — references to notes/ from AI-maintained files must resolve
+// Capture only delimited tokens (backtick / quote / wikilink) so prose mentions like "notes/" don't false-positive
+const notesRefErrors = [];
+const maintainedFiles = [...wikiPages, 'index.md'].filter(f => fs.existsSync(f));
+const notesRe = /[`"'\[[]notes\/[^`"'\]]+/g;
+for (const f of maintainedFiles) {
+  const c = read(f);
+  let m;
+  while ((m = notesRe.exec(c))) {
+    let ref = m[0].replace(/^[`"'\[[]/, '');
+    ref = ref.split('|')[0];                    // strip wikilink alias
+    ref = ref.replace(/[`"'\]]+$/, '').trim(); // strip trailing delimiter
+    if (!ref.startsWith('notes/')) continue;
+    if (!fs.existsSync(ref)) notesRefErrors.push(`STALE NOTES PATH: ${f} -> ${ref}`);
+  }
+}
+
+errors.push(...pluginErrors, ...notesRefErrors);
+
 // ---- Report ----
 const dead = errors.filter(e => e.startsWith('DEAD'));
 const other = errors.filter(e => !e.startsWith('DEAD'));
@@ -203,6 +253,8 @@ console.log(`[9] Unlinked raw      : ${warnings.filter(w => w.startsWith('RAW UN
 console.log(`[10] Stale anchors    : ${warnings.filter(w => w.startsWith('STALE ANCHOR')).length}`);
 console.log(`[11] Title != file    : ${warnings.filter(w => w.startsWith('TITLE !=')).length}`);
 console.log(`[8] Duplicate names   : ${warnings.filter(w => w.startsWith('DUP BASENAME')).length}`);
+console.log(`[12] Plugin consistency: ${pluginErrors.length}`);
+console.log(`[13] Notes paths      : ${notesRefErrors.length}`);
 console.log('');
 if (orphans.length) { console.log('⚠️  Orphans:'); orphans.forEach(o => console.log(`    ${o}`)); }
 if (dead.length) { console.log('⚠️  Dead links:'); dead.forEach(e => console.log(`    ${e}`)); }
