@@ -1,0 +1,44 @@
+---
+title: "ElevenLabs Synthesis"
+category: "Synthesis"
+tags:
+  - synthesis
+  - audio
+  - voice
+  - ai
+sources: ["wiki/sources/ElevenLabs.md"]
+last_updated: 2026-08-12
+---
+
+## สรุปใจความสำคัญ (Executive Summary)
+[[wiki/sources/ElevenLabs|ElevenLabs]] เป็นแพลตฟอร์ม AI ด้านเสียงครบวงจรที่ให้บริการทั้งเครื่องมือสร้างสรรค์ (ElevenCreative), การสร้าง Voice Agents (ElevenAgents) และ API สำหรับนักพัฒนา (ElevenAPI) — สร้างขึ้นบนรากฐานการวิจัยเสียงเดียวกันที่เริ่มจากโมเดลเสียงเลียนแบบมนุษย์เป็นโมเดลแรกของโลก
+
+## การวิเคราะห์เชิงลึก (Deep Analysis)
+
+### โครงสร้างแพลตฟอร์ม
+- **ElevenCreative** — เครื่องมือสร้าง/แก้ไขสื่อ (speech, music, SFX, voice cloning, image/video) สำหรับครีเอเตอร์
+- **ElevenAgents** — ตัวแทนสนทนาแบบ omnichannel (โทรศัพท์, แชท, อีเมล, WhatsApp) พร้อม analytics, testing, guardrails และ workflows
+- **ElevenAPI** — ชุด API สำหรับนักพัฒนา (TTS, STT, Music) ที่ให้ควบคุมเชิงลึก
+
+### วิวัฒนาการของโมเดล (จากไทม์ไลน์วิจัย)
+- **2023:** Eleven Multilingual v2 (ความเหมือนจริง) → Eleven Turbo v2 (ความหน่วงต่ำ)
+- **2024:** Eleven Flash v2.5 (ความหน่วงต่ำพิเศษ)
+- **2025:** Scribe (ASR) → Eleven v3 (โมเดล TTS ที่ expressive ที่สุด) → Eleven Music
+- **2025–2026:** Scribe v2 Realtime → Scribe v2 → Expressive Mode for Agents → Music v2 → **Dubbing v2** (รักษาอารมณ์/การแสดงของต้นฉบับข้ามภาษา — จุดเปลี่ยนสำคัญ)
+
+### แนวคิดที่ขัดแย้ง/น่าสนใจ
+- **ความตึงระหว่าง "เครื่องมือ" กับ "แพลตฟอร์ม":** การรวมฝั่งครีเอเตอร์และนักพัฒนาไว้ที่เดียวลดช่องว่างการผลิต แต่ก็ทำให้ตัดสินใจยากขึ้นว่า งานไหนควรใช้ UI สำเร็จรูป (Creative) งานไหนควรเขียนโค้ด (API)
+- **ความสามารถเสียงมนุษย์ vs ความเสี่ยง:** voice cloning + expressive agents เปิดประตูทั้งการผลิตเนื้อหาและความเสี่ยงด้าน identity/spoofing — จุดนี้เป็นดาบสองคมที่ผู้ใช้ต้องประเมินเอง
+- **Scribe 98% accuracy** — โมเดล STT ที่เป็นส่วนเสริมของระบบนิเวศเสียงเดียวกัน (สำหรับบริบทเปรียบเทียบกับผู้เล่น ASD รายอื่น ต้องหาแหล่งข้อมูลเพิ่มเติมภายหลัง)
+
+### การประยุกต์ใช้
+- **ครีเอเตอร์:** พากย์เสียง/พ็อดแคสต์/เพลงประกอบ โดยไม่ต้องจ้างนักพากย์ — เห็นได้จากกรณี NVIDIA, Duolingo, Clay
+- **ธุรกิจ:** Voice agents สำหรับ CX แบบ omnichannel — Deliveroo, Meesho, Cars24 ใช้ลดต้นทุนบริการลูกค้าแบบ real-time หลายภาษา
+- **นักพัฒนา:** ใช้ TTS/STT/Music API ฝังในแอปของตัวเอง (เช่น Eleven Flash 75ms เหมาะกับ conversational use case)
+
+### ข้อควรระวัง
+- TTS API รองรับ 29+ ภาษา ขณะที่ speech generation รองรับ 70+ ภาษา — ต้องเช็คสเปคต่อ feature ก่อนใช้งานจริง
+- Voice cloning และ agents ควรใช้ภายใต้ policy ที่ชัดเจน (guardrails ใน ElevenAgents มีไว้ตอบโจทย์นี้)
+
+## การเชื่อมโยง (Network)
+- เชื่อมโยงกับ: [[wiki/MOCs/AI-Audio|AI Audio MOC]], [[wiki/sources/ElevenLabs|ElevenLabs]]

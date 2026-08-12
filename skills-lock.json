@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "skills": {
+    "Smart Tagger": {
+      "source": "tpitsunov/obsidian-skills",
+      "sourceType": "github",
+      "skillPath": "smart_tagger/SKILL.md",
+      "computedHash": "f4ad8b044e27949cd2a7e046a83ff91026cc2c5ca651705916be1d520db87659"
+    },
+    "defuddle": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "skillPath": "skills/defuddle/SKILL.md",
+      "computedHash": "ad2cf050eced5f0d9057d534bf6e084bd8d6e521529b5b783940b20fd835c4df"
+    },
+    "docx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/docx/SKILL.md",
+      "computedHash": "012d811a4ef20c279fcfb91fb3b8f37a8ebe8cdb6b9f6567d40f71efbe5c33c4"
+    },
+    "json-canvas": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "skillPath": "skills/json-canvas/SKILL.md",
+      "computedHash": "bb7aa4f03414d50d91736f824bc5f79122b38a895deb03c0260700842a338580"
+    },
+    "obsidian-bases": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "skillPath": "skills/obsidian-bases/SKILL.md",
+      "computedHash": "0d9958e07672384650f404bda4fc9268e1720e9234d42eeca29fc356b1e2a277"
+    },
+    "obsidian-cli": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "skillPath": "skills/obsidian-cli/SKILL.md",
+      "computedHash": "89ded0eb1499286d5c95217df0ff7015aa46b7efe4646fafaba38cbac3289392"
+    },
+    "obsidian-markdown": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "skillPath": "skills/obsidian-markdown/SKILL.md",
+      "computedHash": "d65bfcd6012560c61da9c88c79679a9a8218ac6b4928df9b55ae451949a1618a"
+    },
+    "obsidian-power-user": {
+      "source": "sleestk/skills-pipeline",
+      "sourceType": "github",
+      "skillPath": "Obsidian/SKILL.md",
+      "computedHash": "e368fcfdbd16d2094f0f7428b8ead4a900495f87fcd55823d71e05ba25c1d9a8"
+    },
+    "pdf": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pdf/SKILL.md",
+      "computedHash": "37226d4220d844377e6b2a386c51a011df4cd130855ff0b80bcc22f9c28abd57"
+    },
+    "pptx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/pptx/SKILL.md",
+      "computedHash": "caf4d5ebb6e439f54e5ca0006b8e9e98876e58ac8d67abbbc09547d8107f3e87"
+    },
+    "xlsx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/xlsx/SKILL.md",
+      "computedHash": "957797e8b9dc0f54fae6bbab4dfe3880e4f995f1a519b8b05c099aa6df06ac22"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+filters:
+  and:
+    - file.inFolder("notes")
+    - 'file.ext == "md"'
+    - 'file.basename != "README"'
+
+formulas:
+  folder_label: 'if(file.folder == "notes", "โน้ตของฉัน", if(file.folder == "notes/daily", "Daily", "Inbox/อ่าน"))'
+
+properties:
+  formula.folder_label:
+    displayName: "ที่มา"
+  file.folder:
+    displayName: "โฟลเดอร์"
+
+views:
+  - type: table
+    name: "โน้ตทั้งหมด"
+    order:
+      - file.name
+      - formula.folder_label
+      - file.mtime
+
+  - type: cards
+    name: "การ์ดโน้ต"
+    order:
+      - file.name
+      - formula.folder_label
+      - file.folder

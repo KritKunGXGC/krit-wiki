@@ -1,0 +1,48 @@
+filters:
+  and:
+    - file.inFolder("wiki")
+    - 'file.ext == "md"'
+    - 'file.basename != "README"'
+
+formulas:
+  updated_days: 'if(last_updated, (today() - date(last_updated)).days, "")'
+  event_date: 'if(date, date(date).format("YYYY-MM-DD"), "")'
+
+properties:
+  category:
+    displayName: "หมวด"
+  formula.updated_days:
+    displayName: "อายุ (วัน)"
+  formula.event_date:
+    displayName: "วันที่"
+
+views:
+  - type: table
+    name: "ทุกหน้า"
+    groupBy:
+      property: category
+      direction: ASC
+    order:
+      - file.name
+      - category
+      - tags
+      - last_updated
+
+  - type: table
+    name: "เพิ่งอัปเดต"
+    limit: 15
+    order:
+      - file.name
+      - category
+      - formula.updated_days
+
+  - type: table
+    name: "Timeline (Events)"
+    filters:
+      and:
+        - 'category == "Event"'
+        - 'date != ""'
+    order:
+      - formula.event_date
+      - file.name
+      - tags
