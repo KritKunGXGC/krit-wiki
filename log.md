@@ -328,3 +328,19 @@ This is an append-only chronological log of all operations performed on this wik
 2. **Bases view ตามแท็ก** — `Wiki Library.base` เพิ่ม 4 views: English Learning (#english-learning), AI & Agentic (#agentic-ai/#ai-agents), Obsidian & PKM (#obsidian/#pkm), FOSS & Programming (#free-software/#open-source/#programming); `Notes Library.base` เพิ่ม 3 views: สำเนาอ่าน (#ingested), Daily (#journal), Inbox (#inbox)
 3. **MOC Hub × "สิ่งที่กำลังเติบโต"** — เพิ่มส่วน Dataview อัตโนมัติใน `wiki/MOCs/_Hub.md`: เพิ่งอัปเดตล่าสุด, เหตุการณ์ล่าสุด, โน้ตส่วนตัวล่าสุด + ลิงก์ Vault Manual
 - ปรับ `_system/TEMPLATE Quick Capture.md` เพิ่ม `tags: [inbox]` (ให้ #inbox view กรองเจอ)
+
+## [2026-08-12] improvement | Content deepening + naming standardization (หลังสกอร์ 79/100)
+### 1. อัดความลึก entities ครบ 8 หน้า (จาก ~60–116 คำ → ~134–204 คำ)
+- วิจัยข้อเท็จจริงจริงจากเว็บ (ไม่แต่งข้อมูล): Asylum (รูปแบบ "Every X Explained"), Just Explained (~4.6K subs, CS/OS deep-dives), Focus Café (~12K subs, minimal Obsidian setups), Tech With Lucy = Lucy Wang (อดีต AWS Solutions Architect, ผู้ก่อตั้ง Zero To Cloud, ~274K subs), CyanVoxel = Travis Abendshien (GitHub: Vauxhall, Vault Template, Daily/Game Themes, TagStudio), Wanderloots = Callum (อดีต IP lawyer, ~92K subs, Hermes agent), Tim Miller = Timothy Miller (obsidian.rocks + timothymiller.dev, FINVA, สนับสนุน MOCs/Bases แบบ no-code), Vannevar Bush (ชีวประวัติเต็ม: Tufts/MIT, Raytheon, differential analyzer, OSRD, NSF)
+- ทุกหน้าลิงก์ขาออกเพิ่ม (FOSS, MOCs, ครีเอเตอร์พี่น้อง) — กราฟหนาแน่นขึ้น
+### 2. ขยาย concepts บาง 5 หน้า (จาก ~89–176 คำ → ~160–223 คำ)
+- Spaced Repetition: +forgetting curve (Ebbinghaus 1885), spacing effect, SM-2/FSRS, active recall, แนวปฏิบัติที่ดี
+- IELTS: +โครงสร้างข้อสอบ (ตาราง 4 ทักษะ), อายุผลสอบ 2 ปี, ตารางเทียบ CEFR (โดยประมาณ), กลยุทธ์ prep
+- MOC: +ตาราง MOC vs Folder vs Tag, navigational/curated MOC, เมื่อไหร่ควรสร้าง, ตัวอย่างใน vault
+- Memex: +ลักษณะอุปกรณ์ (ไมโครฟิล์ม, trails, marginal notes), บริบทปี 1945, ไทม์ไลน์มรดก (Nelson 1965 → Engelbart 1968 → Berners-Lee 1989)
+- CEFR: +ที่มา (Council of Europe, 2001), การใช้จริง (เทียบผลสอบ, self-assessment, กรอบอ้างอิงในไทย), ข้อควรระวัง
+### 3. เก็บ naming ตาม convention (warnings 19 → 12, errors 0)
+- Rename 3 ไฟล์: `ElevenLabs-Synthesis.md` → `ElevenLabs Synthesis.md`, `AI-Audio.md` → `AI Audio MOC.md`, `_Hub.md` → `MOC Hub.md` + อัปเดต references ทั้งหมด (sed ทั่ว wiki/ + index.md + _system templates)
+- แก้ frontmatter title ให้ตรงชื่อไฟล์ 5 หน้า: Obsidian & PKM MOC→Obsidian & PKM, Form Function Fun, Obsidian Agentic AI Workflow, Free Obsidian Journal (ลบ trailing period), CEFR
+- `wiki/events/README.md` **ไม่** rename (lint ออกแบบให้ README = folder index โดยเฉพาะ — มี exemption date/title); เหลือ warnings เฉพาะ pattern ตั้งใจ (11 อัน = events แบบลงวันที่ + 1 dup basename readme)
+- ตรวจ: lint 58 หน้า / errors 0 / warnings 12; dead links 0; orphans 0

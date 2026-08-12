@@ -26,8 +26,8 @@ snapshot ของหน้าเว็บ ElevenLabs ณ วันที่น�
 - ไทม์ไลน์โมเดล ณ จุดนี้ครอบคลุมถึง **Music v2 และ Dubbing v2** (พ.ค. 2026)
 
 ## ผลกระทบ
-- แหล่งข้อมูลหลักของ [[wiki/sources/ElevenLabs|ElevenLabs]] source และ [[wiki/syntheses/ElevenLabs-Synthesis|ElevenLabs Synthesis]]
+- แหล่งข้อมูลหลักของ [[wiki/sources/ElevenLabs|ElevenLabs]] source และ [[wiki/syntheses/ElevenLabs Synthesis|ElevenLabs Synthesis]]
 
 ## ดูเพิ่ม
 - [[wiki/events/README|Events]]
-- [[wiki/MOCs/AI-Audio|AI Audio MOC]]
+- [[wiki/MOCs/AI Audio MOC|AI Audio MOC]]

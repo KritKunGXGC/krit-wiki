@@ -56,4 +56,4 @@ last_updated: 2026-08-12
 - ทุกการแก้หน้า `wiki/` ต้องมี frontmatter ครบ + `last_updated` + บันทึก `log.md`
 
 ## ดูเพิ่ม
-- [[wiki/README|Wiki Map of Content]] · [[wiki/MOCs/_Hub|MOC Hub]] · [[index|แดชบอร์ด]]
+- [[wiki/README|Wiki Map of Content]] · [[wiki/MOCs/MOC Hub|MOC Hub]] · [[index|แดชบอร์ด]]

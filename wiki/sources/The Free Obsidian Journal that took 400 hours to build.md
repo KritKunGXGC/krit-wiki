@@ -1,5 +1,5 @@
 ---
-title: "The Free Obsidian Journal that took 400 hours to build."
+title: "The Free Obsidian Journal that took 400 hours to build"
 category: "Source"
 tags: ["clippings", "obsidian", "plugins"]
 sources: ["raw/The Free Obsidian Journal that took 400 hours to build.md"]
@@ -9,7 +9,7 @@ last_updated: 2026-08-12
 ## Summary
 Focus Café provides guidelines for managing Obsidian plugins to avoid vault complexity and breakage. The author recommends 6 unobtrusive "quality of life" plugins: Sort and Permute Lines, Settings Search, Recent Files, Tag Wrangler, Paste Image Rename, and Omnisearch.
 
-# The Free Obsidian Journal that took 400 hours to build.
+# The Free Obsidian Journal that took 400 hours to build
 
 [Source](https://www.youtube.com/watch?v=a-beIdZBe6k) | By Focus Café
 

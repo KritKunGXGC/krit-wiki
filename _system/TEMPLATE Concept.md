@@ -16,4 +16,4 @@ last_updated: <% tp.date.now("YYYY-MM-DD") %>
 ## ตัวอย่าง / บริบทใน vault นี้
 
 ## Sources
-- ดูเพิ่ม: [[wiki/MOCs/_Hub|MOC Hub]]
+- ดูเพิ่ม: [[wiki/MOCs/MOC Hub|MOC Hub]]

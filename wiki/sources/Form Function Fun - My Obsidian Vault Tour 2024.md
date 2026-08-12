@@ -1,5 +1,5 @@
 ---
-title: "Form, Function, & Fun! - My Obsidian Vault Tour 2024"
+title: "Form Function Fun - My Obsidian Vault Tour 2024"
 category: "Source"
 tags:
   - clippings

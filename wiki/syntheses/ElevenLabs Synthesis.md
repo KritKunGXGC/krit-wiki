@@ -41,4 +41,4 @@ last_updated: 2026-08-12
 - Voice cloning และ agents ควรใช้ภายใต้ policy ที่ชัดเจน (guardrails ใน ElevenAgents มีไว้ตอบโจทย์นี้)
 
 ## การเชื่อมโยง (Network)
-- เชื่อมโยงกับ: [[wiki/MOCs/AI-Audio|AI Audio MOC]], [[wiki/sources/ElevenLabs|ElevenLabs]]
+- เชื่อมโยงกับ: [[wiki/MOCs/AI Audio MOC|AI Audio MOC]], [[wiki/sources/ElevenLabs|ElevenLabs]]

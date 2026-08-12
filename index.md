@@ -14,8 +14,8 @@ last_updated: 2026-08-12
 ## เริ่มต้นตรงนี้ {: #start-here}
 
 > [!tip] **เริ่มต้นที่นี่**
-> - **[[wiki/MOCs/_Hub|MOC Hub]]** — จุดเดียวที่รวมทุกแผนที่เนื้อหา + syntheses สำคัญ
-> - **[[wiki/MOCs/AI-Audio|AI Audio MOC]]** · **[[wiki/MOCs/Obsidian & PKM|Obsidian & PKM MOC]]** — สองแผนที่เนื้อหาหลัก
+> - **[[wiki/MOCs/MOC Hub|MOC Hub]]** — จุดเดียวที่รวมทุกแผนที่เนื้อหา + syntheses สำคัญ
+> - **[[wiki/MOCs/AI Audio MOC|AI Audio MOC]]** · **[[wiki/MOCs/Obsidian & PKM|Obsidian & PKM MOC]]** — สองแผนที่เนื้อหาหลัก
 > - **[[wiki/memory/Vault Manual|📖 Vault Manual]]** — คู่มือใช้ vault นี้ (capture, ingest, lint, plugins)
 > - **[[wiki/Bases/Wiki Library.base|🗄️ Wiki Library]]** · **[[wiki/Bases/Notes Library.base|🗄️ Notes Library]]** — ฐานข้อมูลทุกหน้า
 > - **[[wiki/README|Wiki Map of Content]]** — index รายการทุกหน้าใน `wiki/`

@@ -19,7 +19,7 @@ last_updated: 2026-08-12
 |---|---|
 | [[wiki/README|Wiki Map of Content]] | **index หลักของ `wiki/` ทั้งหมด** — รายการทุกหน้าแบ่งตามหมวด (concepts, entities, sources, syntheses, events…) |
 | [[wiki/MOCs/Obsidian & PKM|Obsidian & PKM MOC]] | Obsidian, PKM, โครงสร้างโฟลเดอร์, ปลั๊กอิน, และ AI agent ใน vault |
-| [[wiki/MOCs/AI-Audio|AI Audio MOC]] | เทคโนโลยี AI ด้านเสียง, voice, และเครื่องมือสร้างสรรค์ |
+| [[wiki/MOCs/AI Audio MOC|AI Audio MOC]] | เทคโนโลยี AI ด้านเสียง, voice, และเครื่องมือสร้างสรรค์ |
 
 ## Syntheses สำคัญ
 

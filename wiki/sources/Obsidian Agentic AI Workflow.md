@@ -1,5 +1,5 @@
 ---
-title: "Obsidian + Agentic AI? 🧠 Full Hermes Obsidian Workflow & Wiki Prep"
+title: "Obsidian Agentic AI Workflow"
 category: "Source"
 tags:
   - clippings

@@ -26,7 +26,7 @@ last_updated: 2026-08-12
 
 ### การตรวจสอบคุณภาพ (Lint)
 - ตรวจ raw/ → wiki/ coverage ครบ 8/8 + 1 image
-- ตัดลิงก์ข้ามที่ผิดหมวด (AI-Audio ↔ OpenClaw/FINVA/Memex)
+- ตัดลิงก์ข้ามที่ผิดหมวด (AI Audio MOC ↔ OpenClaw/FINVA/Memex)
 - สร้าง [[wiki/entities/Tim Miller|Tim Miller]], [[wiki/entities/Focus Café|Focus Café]], [[wiki/entities/Tech With Lucy|Tech With Lucy]], [[wiki/entities/Wanderloots|Wanderloots]]
 - สร้าง `wiki/events/` placeholder + `_system/lint.js` (lint script ถาวร)
 - แก้ orphan: ลิงก์ [[wiki/README|Wiki MOC]] จาก index.md

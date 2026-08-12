@@ -98,7 +98,7 @@ Source pages hold processed raw material — transcripts, clipped articles, and 
 
 ## 6. Syntheses
 
-- [[wiki/syntheses/ElevenLabs-Synthesis|ElevenLabs-Synthesis]] — Analysis of the ElevenLabs platform.
+- [[wiki/syntheses/ElevenLabs Synthesis|ElevenLabs Synthesis]] — Analysis of the ElevenLabs platform.
 - [[wiki/syntheses/English Learning Guide|English Learning Guide]] — Systematic self-study framework (CEFR + shadowing + accent choice).
 - [[wiki/syntheses/Essential Obsidian Plugins|Essential Obsidian Plugins]] — Philosophy of minimal, quality-of-life Obsidian plugins.
 - [[wiki/syntheses/FINVA Folder Structure|FINVA Folder Structure]] — Workflow-based folder organization over rigid categorization.
@@ -110,8 +110,8 @@ Source pages hold processed raw material — transcripts, clipped articles, and 
 
 ## 7. MOCs
 
-- [[wiki/MOCs/_Hub|MOC Hub]] — จุดเริ่มต้นนำทางเดียว: รวมทุก MOC + syntheses สำคัญ
-- [[wiki/MOCs/AI-Audio|AI Audio]] — Map of Content for AI audio technology, creative tools, and voice applications.
+- [[wiki/MOCs/MOC Hub|MOC Hub]] — จุดเริ่มต้นนำทางเดียว: รวมทุก MOC + syntheses สำคัญ
+- [[wiki/MOCs/AI Audio MOC|AI Audio]] — Map of Content for AI audio technology, creative tools, and voice applications.
 - [[wiki/MOCs/Obsidian & PKM|Obsidian & PKM]] — Map of Content for Obsidian workflows, folder structures, plugins, and AI-agent integration.
 
 ## 8. Memory

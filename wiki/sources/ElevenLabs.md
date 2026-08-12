@@ -46,6 +46,6 @@ Provides robust APIs for developers:
 - Music API.
 
 ## See Also
-- [[wiki/MOCs/AI-Audio|AI Audio MOC]]
-- [[wiki/syntheses/ElevenLabs-Synthesis|ElevenLabs Synthesis]]
+- [[wiki/MOCs/AI Audio MOC|AI Audio MOC]]
+- [[wiki/syntheses/ElevenLabs Synthesis|ElevenLabs Synthesis]]
 - [[wiki/events/2026-05-28 ElevenLabs Site Snapshot|Site snapshot 2026-05-28]]

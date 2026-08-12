@@ -14,10 +14,10 @@ last_updated: 2026-08-12
 ## Overview
 ศูนย์รวมองค์ความรู้เกี่ยวกับเทคโนโลยี AI ด้านเสียง เครื่องมือสร้างสรรค์ และการพัฒนาแอปพลิเคชันเสียง
 
-> 🧭 กลับไป: [[wiki/MOCs/_Hub|MOC Hub]]
+> 🧭 กลับไป: [[wiki/MOCs/MOC Hub|MOC Hub]]
 
 ## Syntheses
-- [[wiki/syntheses/ElevenLabs-Synthesis|ElevenLabs-Synthesis]]
+- [[wiki/syntheses/ElevenLabs Synthesis|ElevenLabs Synthesis]]
 
 ## Sources
 - [[wiki/sources/ElevenLabs|ElevenLabs]]

@@ -1,5 +1,5 @@
 ---
-title: "Obsidian & PKM MOC"
+title: "Obsidian & PKM"
 category: "MOC"
 tags:
   - moc
@@ -13,7 +13,7 @@ last_updated: 2026-08-12
 ## Overview
 ศูนย์รวมองค์ความรู้เกี่ยวกับ Obsidian และ Personal Knowledge Management (PKM) — ตั้งแต่การจัดโครงสร้างโฟลเดอร์ ระบบปลั๊กอิน ไปจนถึงการผสาน AI agent เข้ากับ vault
 
-> 🧭 กลับไป: [[wiki/MOCs/_Hub|MOC Hub]]
+> 🧭 กลับไป: [[wiki/MOCs/MOC Hub|MOC Hub]]
 
 ## Syntheses
 - [[wiki/syntheses/FINVA Folder Structure|FINVA Folder Structure]]
