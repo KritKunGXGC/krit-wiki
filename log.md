@@ -393,7 +393,7 @@ This is an append-only chronological log of all operations performed on this wik
 - **พบของจริงระหว่างตรวจ:** `raw/8 Obsidian Plugins That I Can't Live Without.md` (Mike Schmitz, 2025-08-15 — 8 essential plugins) — ยังไม่มีหน้า wiki → รอ ingest
 
 ## [2026-08-12] security | Manual redaction (privacy exception) + untrack personal folders
-- **MANUAL REDACTION — raw/Note Taking & Research Assistant Powered by AI.md:** ลบบรรทัด `KRITKUNG Magin` + `kritkungmagin@gmail.com` (ชื่อจริง + อีเมลส่วนตัวของผู้ใช้) แทนด้วย `[REDACTED — personal info removed 2026-08-12, see log.md]`
+- **MANUAL REDACTION — raw/Note Taking & Research Assistant Powered by AI.md:** ลบบรรทัดที่ระบุชื่อจริง + อีเมลส่วนตัวของผู้ใช้ (PII) แทนด้วย `[REDACTED — personal info removed 2026-08-12, see log.md]` (ชื่อ/อีเมลไม่ถูกบันทึกใน log นี้เพื่อความปลอดภัย)
 - **เหตุผล:** ข้อยกเว้นด้านความเป็นส่วนตัว/ความปลอดภัย — เนื้อหานี้เป็น PII ของผู้ใช้เอง ไม่ใช่เนื้อหาต้นฉบับของ source (เป็น metadata ส่วนท้ายที่ตกมาจาก Google account แชร์) — ละเมิดกติกา raw/ = immutable เป็นครั้งแรกและครั้งเดียวเท่าที่จำเป็น
 - **Untrack `notes/`:** เพิ่ม `notes/` ใน `.gitignore` + `git rm -r --cached notes/` — ไฟล์ยังอยู่บนดิสก์ครบ (private by design — ไม่ควรถูก git ติดตามตั้งแต่แรก)
 - **Untrack `.obsidian/`:** เพิ่ม `.obsidian/` ใน `.gitignore` (แทนที่รายการย่อยเดิมทั้งหมด) + `git rm -r --cached .obsidian/` — plugin configs/workspace state เป็นของเฉพาะเครื่อง ไม่ต้องการ version control; ไฟล์ยังอยู่บนดิสก์ครบ
