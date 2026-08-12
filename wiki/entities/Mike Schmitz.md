@@ -13,7 +13,7 @@ Mike Schmitz เป็นครีเอเตอร์สาย PKM (Personal K
 ## ภาพรวม
 - **พื้นหลัง:** ใช้ Obsidian "all day, every day" — ลองใช้ plugins มากกว่าร้อยตัว, ติดตั้งจริง 39 ตัว
 - **ธีมเนื้อหา:** plugin hygiene, PKM stack framework, multiscale planning (Cal Newport), digital journaling, plain-text task management
-- **ผลิตภัณฑ์:** Starter Vault ฟรี (vault.practicalpkm.com) + LifeHQ (done-for-you vault เสียเงิน)
+- **ผลิตภัณฑ์:** Starter Vault ฟรี (vault.practicalpkm.com) + LifeHQ (done-for-you vault ที่มี plugins/settings พร้อมใช้ — ราคาไม่ได้ระบุใน source)
 
 ## Contributions in This Wiki
 - Author of [[wiki/sources/8 Obsidian Plugins That I Can't Live Without|8 Obsidian Plugins That I Can't Live Without]] — 8 plugins S-tier จาก 39 ตัว: Calendar, Periodic Notes, Dataview, Keep the Rhythm, Templater, QuickAdd, Tasks, Actions URI
@@ -25,7 +25,7 @@ Mike Schmitz เป็นครีเอเตอร์สาย PKM (Personal K
 
 ## Connections
 - [[wiki/concepts/Bases|Bases]] · [[wiki/concepts/Obsidian|Obsidian]] · [[wiki/concepts/MOC (Map of Content)|MOC]]
-- [[wiki/entities/Tim Miller|Tim Miller]] — ผู้เขียนเนื้อหา PKM/Obsidian เช่นกัน
+- [[wiki/entities/Tim Miller|Tim Miller]] — ผู้เขียนเนื้อหา PKM/Obsidian เช่นกัน (ต่างแพลตฟอร์ม: Schmitz = YouTube workflow-focused, Miller = บทความโครงสร้าง/องค์กร) — ทั้งคู่สนับสนุนแนวทาง "เลือกเครื่องมือให้ fit กับระบบ"
 - [[wiki/MOCs/Obsidian & PKM|Obsidian & PKM]] — MOC กลุ่มเนื้อหานี้
 
 ## Sources

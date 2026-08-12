@@ -79,12 +79,12 @@ Entity pages describe people, organizations, and tools.
 - [[wiki/events/1945-07 As We May Think Published|1945-07 · As We May Think]] — บทความ Vannevar Bush
 - [[wiki/events/2024-03-17 Form Function Fun Published|2024-03-17 · Form Function Fun]] — วิดีโอ CyanVoxel Vault Tour
 - [[wiki/events/2025-07-07 How I use Folders in Obsidian Published|2025-07-07 · How I use Folders]] — บทความ FINVA
+- [[wiki/events/2025-08-15 8 Obsidian Plugins Published|2025-08-15 · 8 Obsidian Plugins]] — วิดีโอ Mike Schmitz
 - [[wiki/events/2026-05-28 ElevenLabs Site Snapshot|2026-05-28 · ElevenLabs Snapshot]]
 - [[wiki/events/2026-06-09 Every Free App You Actually Need Published|2026-06-09 · Free Apps]] — วิดีโอ Asylum
 - [[wiki/events/2026-07-01 What is OpenClaw Published|2026-07-01 · OpenClaw Published]]
 - [[wiki/events/2026-07-23 Obsidian Agentic AI Workflow Published|2026-07-23 · Agentic AI Workflow]]
 - [[wiki/events/2026-08-08 Every Programming Language Explained Published|2026-08-08 · Programming Languages]] — วิดีโอ Just Explained
-- [[wiki/events/2025-08-15 8 Obsidian Plugins Published|2025-08-15 · 8 Obsidian Plugins]] — วิดีโอ Mike Schmitz
 
 ## 5. Sources
 
