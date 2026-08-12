@@ -469,3 +469,10 @@ This is an append-only chronological log of all operations performed on this wik
 - สถานะสุดท้าย (ตรวจยืนยันครบทุกมุม — direct, external network, 4 edge IP bypass DNS): **HTTP 200 ครบ** + landing ใหม่ render สมบูรณ์ (stat 13/9/11/9/13/6, tag cloud, hero badges)
 - Pages API: `build_type: legacy` · `source: {gh-pages, /}` · `status: built` · `custom_404: true` — branch deploy ทำงานแล้ว (workflow build → force-push gh-pages → legacy build ของ GitHub)
 - บทเรียน: ห้ามพิมพ์ Pages URL เอง — ใช้ `gh api repos/OWNER/REPO/pages --jq .html_url` หรือ `pages/deployments` เสมอ
+
+## [2026-08-12] cleanup | Removed website entirely (web version no longer wanted) — local + GitHub
+- ลบ `C:\Users\User\krit-site` (**342 MB** — Quartz clone + node_modules + build output) — node process ชั่วคราวถือไฟล์อยู่ → ใช้ PowerShell Remove-Item -Force ลบสำเร็จ
+- ลบ `site/` (40KB: quartz.config.ts, quartz.layout.ts, custom.scss, transform.mjs) + `.github/workflows/deploy-site.yml` จาก vault → commit + push (CI หยุดทำงาน)
+- GitHub: ลบ branch `gh-pages` → **GitHub ปิด GitHub Pages ให้อัตโนมัติ** (source branch หาย) — `DELETE /repos/.../pages` ตอบ 404 เพราะ site ถูก revoke ไปแล้ว
+- ตรวจยืนยัน: `https://kritkungxgc.github.io/krit-wiki/` → **HTTP 404 (Site not found)** = เว็บหายจากอินเทอร์เน็ตตามต้องการ; wiki/ + index.md + notes/ **ไม่มี reference ค้าง** (grep 0 matches — มีเฉพาะประวัติใน log.md ซึ่ง append-only เก็บไว้ตามกติกา)
+- เนื้อหา vault ทั้งหมดคงเดิมครบ (raw/, wiki/, notes/, _system/)
