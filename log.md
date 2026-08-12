@@ -434,3 +434,11 @@ This is an append-only chronological log of all operations performed on this wik
 - **ขยาย Essential Obsidian Plugins synthesis ด้วยมุมมองที่ 3**: ตารางเทียบ 3 ปรัชญา (Focus Café 6 ตัว / CyanVoxel 17 ตัว / Mike Schmitz 39 ตัวแต่พึ่งพา 8) — สรุปว่า "จำเป็น" ≠ "ติดตั้งน้อย"; ตอบ tension "6 vs 26 ตัว" ของ vault นี้ตรงจุด (ตัวชี้วัดจริง = จำนวนที่ workflow พึ่งพา); เพิ่มเกณฑ์เลือกแบบ system-fit (PKM stack) ที่ 2 ฝ่ายแรกมองข้าม
 - อัปเดต wiki/README.md (Entities/Events/Sources), events/README.md, MOC Hub description
 - ตรวจ: lint ผ่าน — 0 errors (RAW UNREFERENCED ของไฟล์นี้หายจาก warnings ด้วย)
+
+## [2026-08-12] site | สร้างเว็บอ่าน Krit ด้วย Quartz (GitHub Pages)
+- เพิ่มเว็บสาธารณะสำหรับอ่าน wiki: **Quartz v4.5.2** (static site generator สำหรับ Obsidian vault) deploy ผ่าน **GitHub Actions → GitHub Pages** — URL: `https://kritkunxgxc.github.io/krit-wiki/`
+- เพิ่ม `site/` (build tooling ใน repo): `transform.mjs` (คัดลอก wiki/ → content/ + แปลง plain wikilinks → path-style + แทนที่บล็อก ```dataview``` ด้วยเวอร์ชันคงที่ + สร้าง landing page พร้อมสถิติจริง), `quartz.config.ts` (ฟอนต์ไทย Noto Sans Thai/IBM Plex Sans Thai, locale th-TH, สี Catppuccin ตามธีม vault, ปิด Latex เพราะ `$1,000+` เป็นสัญลักษณ์เงิน), `quartz.layout.ts`, `custom.scss`
+- `.github/workflows/deploy-site.yml`: push ขึ้น main → clone quartz v4.5.2 (pinned) → apply config → transform → build → deploy-pages (อัปเดตเว็บอัตโนมัติทุก push)
+- `notes/` (พื้นที่ส่วนตัว) ไม่ถูกนำขึ้นเว็บ · `.base`/`.canvas` ข้าม · Dataview blocks แสดงเวอร์ชันคงที่ + หมายเหตุ
+- ทดสอบ local build + browser check 8/8 ผ่าน (ฟอนต์ไทย, search, graph, dark mode, MOC Hub, 0 console errors)
+- ยังเหลือ 1 คลิกจากผู้ใช้: repo Settings → Pages → Source = **GitHub Actions** แล้วเว็บจะขึ้นอัตโนมัติ
