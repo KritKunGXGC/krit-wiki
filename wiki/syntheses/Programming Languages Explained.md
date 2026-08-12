@@ -20,15 +20,26 @@ last_updated: 2026-08-12
 - **Rust กับทิศทางความปลอดภัยระดับรัฐ** — รัฐบาลสหรัฐฯ ออกคำแนะนำให้ย้ายจาก C/C++ ไปภาษา memory-safe; Microsoft ก็เขียน Windows ส่วนใหม่ด้วย Rust — สะท้อนการเปลี่ยนจาก "เร็วที่สุด" เป็น "เร็ว + ปลอดภัย"
 - **"ภาษาโปรแกรมที่ฮอตที่สุดคือ English"** — ใน 2026 โค้ดใหม่ 41% เขียนโดย AI; การเรียนภาษายังจำเป็นเพื่อ "จับผิด AI" และเข้าใจ logic (ดู [[wiki/concepts/Vibe Coding|Vibe Coding]])
 
-### การประยุกต์ใช้: เลือกภาษาแรกตามเป้าหมาย
-- **อยากทำ AI/data:** Python (Pandas, NumPy, TensorFlow, PyTorch)
-- **อยากทำเว็บ:** JavaScript/TypeScript (frontend) + PHP/Node (backend)
-- **อยากทำเกม:** C# (Unity), C++ (Unreal), หรือ Godot (GDScript — ฟรี)
-- **อยากทำงานระบบ/infra:** Go (Docker, Kubernetes), Rust (ความปลอดภัยสูง)
-- **เริ่มเรียนแบบไม่น่ากลัว:** Scratch (visual blocks, 100M+ projects)
+### เปรียบเทียบ: ระบบนิเวศภาษา vs ระบบนิเวศแอป (Just Explained × Asylum)
+ถ้าเทียบวิดีโอนี้กับ [[wiki/syntheses/Free Software Stack|Free Software Stack]] (วิดีโอของช่อง Asylum) จะเห็น **รูปแบบโครงสร้างเดียวกันในคนละชั้นของสแตก**:
+- ทั้งคู่เป็นช่อง "Every X Explained" ที่สรุปตัวเลือกทั้งหมดแล้วแนะนำตาม use case — แต่คนละช่อง (Just Explained vs Asylum) และคนละชั้น (ภาษาโปรแกรม = ชั้นที่สร้างเครื่องมือ, แอปฟรี = ชั้นที่ใช้เครื่องมือ)
+- **จุดที่เห็นพ้อง:** ทั้งคู่เน้น "เลือกตามงาน ไม่ใช่ตามกระแส" — ภาษาแรกตามเป้าหมาย (AI→Python, เว็บ→TS) ตรงกับสแตกที่เลือกตามสาย (ครีเอเตอร์→Resolve/OBS)
+- **จุดที่ต่าง:** สแตกฟรีชี้ว่า "ของดีไม่ต้องแพง" ขณะที่ภาษาชี้ว่า "ของดีไม่ต้องใหม่" (C อายุ 50 ปี ยังรัน Mars rover; PHP ถูกแซวแต่รันเว็บ 70%) — มุมมองเรื่อง "คุณค่าของของเก่า" ที่ต่างกันน่าสนใจ: แอปฟรีมีอายุสั้น แต่ภาษามีอายุขัยเป็นทศวรรษ
+- **จุดที่ทั้งคู่มองข้ามร่วมกัน:** ทั้งสองวิดีโอขาย "ecosystem ที่มั่นคง" แต่ไม่ได้พูดถึง **vendor lock-in** — สแตกฟรีที่ยึด GIMP/Resolve ก็ผูกกับ workflow ของตัวเองไม่ต่างจากการยึดภาษาเดิม
+
+### Vibe Coding: ภาษาที่ AI เขียนดี = ภาษาที่ type-safe
+เชื่อมโยงกับหน้า [[wiki/concepts/Vibe Coding|Vibe Coding]] ให้ลึกขึ้น: ถ้าโค้ด 41% เขียนโดย AI การเลือกภาษาจึงไม่ได้ตัดสินที่ "คนอ่านง่าย" อย่างเดียวอีกต่อไป แต่ตัดสินที่:
+- **AI สร้าง output ที่ถูกต้องได้ง่ายไหม** — TypeScript ครองเพราะ type ทำให้ AI "เดา" ผิดน้อยลง (error ถูกจับที่ compile แทน runtime)
+- **คนตรวจสอบง่ายไหม** — ยิ่งโค้ดจาก AI ยิ่งต้อง "จับผิด" (บทความย้ำเอง) ภาษาที่อ่านง่าย (Python, TS) จึงชนะภาษาที่อ่านยากแต่เร็ว (C++)
+- **นัยยะ:** "ภาษาแรกที่ควรเรียน" ในยุค AI อาจไม่ใช่ภาษาที่ "หางานง่าย" แต่เป็นภาษาที่ "AI เขียนแล้วคนตรวจได้" — ประเด็นที่ source ตั้งคำถามไว้แต่ไม่ได้ตอบ
+
+### คำถามเปิด (Open Questions)
+- ถ้าโค้ดใหม่ 41% เป็นของ AI ภายใน 2026 "การเรียนภาษาแรก" ควรเปลี่ยนเป็น "เรียนการตรวจโค้ด" ก่อนหรือไม่? — source ให้ตัวเลขมาแต่ไม่ขยายผล
+- ภาษาที่ "AI-friendly" (TS, Python) จะกลืนภาษาที่ "AI-ไม่-friendly" (C++) ในระยะยาวไหม? — หลักฐานฝั่งตรงข้ามคือ Rust/C ยังถูกใช้ในระบบที่ต้องการ performance — ยังไม่มีคำตอบใน wiki
 
 ## การเชื่อมโยง (Network)
 - เชื่อมโยงกับ: [[wiki/sources/Every Programming Language Explained in 16 Minutes]]
 - ผู้สร้างสรรค์: [[wiki/entities/Just Explained|Just Explained]]
-- แนวคิดที่เกี่ยวข้อง: [[wiki/concepts/Vibe Coding|Vibe Coding]], [[wiki/concepts/Memex|Memex]] (Tim Berners-Lee ผู้คิด HTML เป็นคนเดียวกับที่ได้แรงบันดาลใจจาก Memex)
+- แนวคิดที่เกี่ยวข้อง: [[wiki/concepts/Vibe Coding|Vibe Coding]], [[wiki/syntheses/Free Software Stack|Free Software Stack]] (ระบบนิเวศ "ทุกอย่างอธิบาย" คนละชั้น)
+- หมายเหตุ: HTML/CERN มีจุดเชื่อมกับ [[wiki/concepts/Memex|Memex]] ผ่าน Tim Berners-Lee (ผู้คิดค้น WWW ได้รับแรงบันดาลใจจากแนวคิดของ Vannevar Bush) — เป็นบริบทประวัติศาสตร์ภายนอก source ไม่ได้กล่าวถึงโดยตรง
 - เหตุการณ์: [[wiki/events/2026-08-08 Every Programming Language Explained Published|วิดีโอ 2026-08-08]]
