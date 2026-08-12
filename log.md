@@ -442,3 +442,16 @@ This is an append-only chronological log of all operations performed on this wik
 - `notes/` (พื้นที่ส่วนตัว) ไม่ถูกนำขึ้นเว็บ · `.base`/`.canvas` ข้าม · Dataview blocks แสดงเวอร์ชันคงที่ + หมายเหตุ
 - ทดสอบ local build + browser check 8/8 ผ่าน (ฟอนต์ไทย, search, graph, dark mode, MOC Hub, 0 console errors)
 - ยังเหลือ 1 คลิกจากผู้ใช้: repo Settings → Pages → Source = **GitHub Actions** แล้วเว็บจะขึ้นอัตโนมัติ
+- ✅ **Pages เปิดแล้ว + เว็บ live** — `https://kritkunxgxc.github.io/krit-wiki/` (HTTP 200, title "Krit Wiki · Krit Wiki")
+- GitHub Pages CI: เจอปัญหา Quartz 4.5.2 ต้องการ node ≥22 → bump `node-version: 24` + push (commit `895a222`) → deploy success
+
+## [2026-08-12] site | เว็บ redesign รอบใหญ่ (Beautification Pass)
+
+- **ฟอนต์**: header → **Prompt** (display font ไทย-ลาติน), body → **Noto Sans Thai**, code → **IBM Plex Mono**
+- **Syntax highlight**: เปลี่ยนเป็นธีม **Catppuccin latte/mocha** ของ Shiki (ตรงกับสี vault) เป๊ะ
+- **Layout**: เพิ่ม `ContentMeta` (วันที่ + เวลาอ่าน), Explorer sidebar มี **emoji icons ต่อโฟลเดอร์** (🧠 concepts, 👤 entities, 📚 sources, 🔬 syntheses, 🗓️ events, 🗺️ MOCs), graph ปรับแรง repel/linkDistance
+- **custom.scss ใหม่ทั้งระบบ**: callouts แบบ Obsidian (ขอบซ้ายสี + พื้น gradient + hover lift), การ์ดสถิติ 6 สี accent + เอฟเฟกต์ hover, tag cloud pills, หมวดหมู่ nav, breadcrumbs/TOC/backlinks เป็น pill, โค้ดบล็อกมุมมน + เงา, ตาราง striped + hover, scrollbar บาง, selection สี gradient, dark mode shadow ละเอียด, SPA page transition fade-in
+- **Landing หน้าแรก**: hero gradient + 4 badges (AI-maintained · 61 หน้า · 13 เหตุการณ์ · อัปเดตอัตโนมัติ), แถวสำรวจหมวดหมู่ 6 ช่องพร้อมจำนวนจริง, ส่วนคลังความรู้ (tag cloud จาก frontmatter), สถิติ 13/9/11/9/13/6
+- **แก้บั๊กเก่าใน transform.mjs**: `relToRoot` ใช้กับ path ใน content dir ผิด root → สถิติ/แท็ก/ล่าสุดเป็น 0 มาตลอดบน Windows (ซ่อนอยู่เพราะ CI Linux ใช้ `includes()` ผ่าน) — แก้ด้วย `relToContent` + ครอบ tag ให้ไม่มีเครื่องหมายคำพูด
+- **CI**: bump actions ใหม่ล่าสุด (checkout@v7, setup-node@v7, upload-pages-artifact@v5, deploy-pages@v5) — ล้าง Node 20 deprecation warnings
+- ทดสอบ local build + browser check 8/8 ผ่าน (hero gradient, สถิติจริง, tag cloud, folder page, content-meta, explorer emoji, dark mode, search, 0 console errors)

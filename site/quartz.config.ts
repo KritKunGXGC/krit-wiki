@@ -3,7 +3,8 @@ import * as Plugin from "./quartz/plugins"
 
 /**
  * Krit Wiki — Quartz 4 configuration
- * Thai fonts + th-TH locale + Catppuccin palette (ตามธีมของ vault)
+ * Thai display font (Prompt) + readable body (Noto Sans Thai)
+ * Catppuccin latte (light) / mocha (dark) — ตามธีมของ vault
  */
 const config: QuartzConfig = {
   configuration: {
@@ -20,15 +21,15 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Noto Sans Thai",
-        body: "IBM Plex Sans Thai",
+        header: "Prompt",
+        body: "Noto Sans Thai",
         code: "IBM Plex Mono",
       },
       colors: {
         lightMode: {
           light: "#eff1f5",
           lightgray: "#ccd0da",
-          gray: "#9ca0b0",
+          gray: "#8c8fa1",
           darkgray: "#6c6f85",
           dark: "#4c4f69",
           secondary: "#1e66f5",
@@ -38,7 +39,7 @@ const config: QuartzConfig = {
         },
         darkMode: {
           light: "#1e1e2e",
-          lightgray: "#45475a",
+          lightgray: "#313244",
           gray: "#6c7086",
           darkgray: "#bac2de",
           dark: "#cdd6f4",
@@ -58,8 +59,8 @@ const config: QuartzConfig = {
       }),
       Plugin.SyntaxHighlighting({
         theme: {
-          light: "github-light",
-          dark: "github-dark",
+          light: "catppuccin-latte",
+          dark: "catppuccin-mocha",
         },
         keepBackground: false,
       }),

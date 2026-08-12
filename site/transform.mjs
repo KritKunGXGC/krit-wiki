@@ -49,6 +49,9 @@ function readFrontmatter(p) {
 }
 
 const relToRoot = (p) => p.slice(ROOT.length + 1).split("\\").join("/")
+// mdFiles เก็บ path ใน content dir → ต้อง slice ด้วย contentDir (ต่างจาก relToRoot ที่ใช้กับ source)
+const relToContent = (p) => p.slice(contentDir.length + 1).split("\\").join("/")
+const isWiki = (p) => relToContent(p).startsWith("wiki/")
 
 // ---------- 1. copy ----------
 console.log("→ cleaning + copying wiki/ …")
@@ -77,7 +80,7 @@ console.log(`  copied ${mdFiles.length} .md files (skipped ${skipped} .base/.can
 // ---------- 2. title → path map ----------
 const map = new Map([["index", "index"]])
 for (const f of mdFiles) {
-  const r = relToRoot(f).replace(/\.md$/, "")
+  const r = relToContent(f).replace(/\.md$/, "")
   const b = basename(r)
   if (!map.has(b)) map.set(b, r)
   const fm = readFrontmatter(f)
@@ -122,11 +125,11 @@ function replaceDataview(text, filePath) {
   const ev = []
   for (const f of mdFiles) {
     const fm = readFrontmatter(f)
-    if (fm.last_updated && f.includes("/wiki/")) {
-      recent.push({ path: relToRoot(f).replace(/\.md$/, ""), title: fm.title || basename(f, ".md"), d: fm.last_updated })
+    if (fm.last_updated && isWiki(f)) {
+      recent.push({ path: relToContent(f).replace(/\.md$/, ""), title: fm.title || basename(f, ".md"), d: fm.last_updated })
     }
-    if (fm.date && /\/wiki\/events\//.test(f)) {
-      ev.push({ path: relToRoot(f).replace(/\.md$/, ""), title: fm.title || basename(f, ".md"), d: fmtDate(fm.date) })
+    if (fm.date && isWiki(f) && relToContent(f).startsWith("wiki/events/")) {
+      ev.push({ path: relToContent(f).replace(/\.md$/, ""), title: fm.title || basename(f, ".md"), d: fmtDate(fm.date) })
     }
   }
   recent.sort((a, b) => (a.d < b.d ? 1 : -1))
@@ -162,7 +165,7 @@ for (const f of mdFiles) {
   let text = readFileSync(f, "utf8")
   const before = text
   text = rewriteWikilinks(text)
-  if (/\/wiki\//.test(relToRoot(f))) text = replaceDataview(text, f)
+  if (isWiki(f)) text = replaceDataview(text, f)
   if (text !== before) writeFileSync(f, text)
 }
 console.log(`  rewritten ${rewritten} plain wikilinks → path-style`)
@@ -170,12 +173,12 @@ console.log(`  rewritten ${rewritten} plain wikilinks → path-style`)
 // ---------- 5. landing page ----------
 const cats = {}
 for (const f of mdFiles) {
-  if (!/\/wiki\//.test(relToRoot(f))) continue
+  if (!isWiki(f)) continue
   const c = readFrontmatter(f).category
   if (c) cats[c] = (cats[c] || 0) + 1
 }
 const statCard = (n, label, accent) =>
-  `<div class="stat"><div class="stat-num" style="color:${accent}">${n}</div><div class="stat-label">${label}</div></div>`
+  `<div class="stat" style="--accent:${accent}"><div class="stat-num">${n}</div><div class="stat-label">${label}</div></div>`
 const stats = [
   statCard(cats["Concept"] || 0, "Concepts", "#8caaee"),
   statCard(cats["Entity"] || 0, "Entities", "#e78284"),
@@ -186,20 +189,66 @@ const stats = [
 ]
 
 const recentPages = [...mdFiles]
-  .filter((f) => /\/wiki\//.test(relToRoot(f)))
-  .map((f) => ({ path: relToRoot(f).replace(/\.md$/, ""), title: readFrontmatter(f).title || basename(f, ".md"), d: readFrontmatter(f).last_updated }))
+  .filter((f) => isWiki(f))
+  .map((f) => ({ path: relToContent(f).replace(/\.md$/, ""), title: readFrontmatter(f).title || basename(f, ".md"), d: readFrontmatter(f).last_updated }))
   .filter((r) => r.d)
   .sort((a, b) => (a.d < b.d ? 1 : -1))
   .slice(0, 8)
 const recentList = recentPages.map((r) => `- [[${r.path}|${r.title}]] — ${r.d}`).join("\n")
 
 const events = [...mdFiles]
-  .filter((f) => /\/wiki\/events\//.test(relToRoot(f)))
-  .map((f) => ({ path: relToRoot(f).replace(/\.md$/, ""), title: readFrontmatter(f).title || basename(f, ".md"), d: fmtDate(readFrontmatter(f).date) }))
+  .filter((f) => isWiki(f) && relToContent(f).startsWith("wiki/events/"))
+  .map((f) => ({ path: relToContent(f).replace(/\.md$/, ""), title: readFrontmatter(f).title || basename(f, ".md"), d: fmtDate(readFrontmatter(f).date) }))
   .filter((r) => r.d)
   .sort((a, b) => (a.d < b.d ? -1 : 1))
   .slice(0, 6)
 const eventList = events.map((r) => `- [[${r.path}|${r.title}]] — ${r.d}`).join("\n")
+
+const totalPages = Object.values(cats).reduce((a, b) => a + b, 0)
+const badges = [
+  "🤖 AI-maintained",
+  `📄 ${totalPages} หน้า`,
+  `🗓️ ${cats["Event"] || 0} เหตุการณ์`,
+  "🚀 อัปเดตอัตโนมัติ",
+].map((b) => `  <span class="hero-badge">${b}</span>`).join("\n")
+
+const folderCount = {
+  concepts: cats["Concept"] || 0,
+  entities: cats["Entity"] || 0,
+  sources: cats["Source"] || 0,
+  syntheses: cats["Synthesis"] || 0,
+  events: cats["Event"] || 0,
+  MOCs: (cats["MOC"] || 0) + (cats["Memory"] || 0),
+}
+const catLabels = {
+  concepts: "🧠 แนวคิด",
+  entities: "👤 บุคคล",
+  sources: "📚 แหล่งข้อมูล",
+  syntheses: "🔬 บทวิเคราะห์",
+  events: "🗓️ เหตุการณ์",
+  MOCs: "🗺️ แผนที่เนื้อหา",
+}
+const catNav = Object.entries(catLabels)
+  .map(([k, label]) => `  <a href="/wiki/${k}/">${label} · ${folderCount[k]}</a>`)
+  .join("\n")
+
+// tag cloud from frontmatter
+const tagCount = {}
+for (const f of mdFiles) {
+  if (!isWiki(f)) continue
+  const raw = readFrontmatter(f).tags || ""
+  for (const t of raw.split(",")) {
+    let tag = t.trim()
+    tag = tag.replace(/^["'\[\]#]+/, "").replace(/["'\]]+$/, "")
+    if (tag) tagCount[tag] = (tagCount[tag] || 0) + 1
+  }
+}
+const topTags = Object.entries(tagCount)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 14)
+const tagCloud = topTags
+  .map(([t, n]) => `  <a href="/tags/${t.toLowerCase().replace(/\s+/g, "-")}">#${t} <span class="count">×${n}</span></a>`)
+  .join("\n")
 
 const landing = `---
 title: "Krit Wiki"
@@ -212,6 +261,16 @@ description: "ศูนย์รวมองค์ความรู้ของ
 
 ศูนย์รวมองค์ความรู้ของ **krit** — ฐานความรู้แบบ *Living Wiki* ที่ AI ดูแลเนื้อหาอย่างต่อเนื่อง ทั้งแนวคิด บุคคล แหล่งข้อมูล บทวิเคราะห์ และไทม์ไลน์เหตุการณ์
 
+<div class="hero-badges">
+${badges}
+</div>
+
+</div>
+
+## สำรวจหมวดหมู่
+
+<div class="cat-nav">
+${catNav}
 </div>
 
 ## เริ่มต้นตรงนี้
@@ -234,6 +293,10 @@ description: "ศูนย์รวมองค์ความรู้ของ
 <div class="stat-grid">
 ${stats.join("\n")}
 </div>
+
+## คลังความรู้
+
+${tagCloud ? `<div class="tag-cloud">\n${tagCloud}\n</div>` : "- _(ยังไม่มีแท็ก)_"}
 
 ## เพิ่งอัปเดตล่าสุด
 
