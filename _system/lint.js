@@ -23,7 +23,7 @@ const fs = require('fs');
 const path = require('path');
 
 const VALID_CATEGORIES = ['Entity', 'Concept', 'Source', 'Event', 'Memory', 'MOC', 'Synthesis'];
-const EXCLUDED_DIRS = new Set(['notes']); // human-owned personal space — never linted
+const EXCLUDED_DIRS = new Set(['notes', '_archive']); // personal space + archived files — never linted
 
 function walk(dir, want = ['.md', '.canvas', '.base']) {
   if (!fs.existsSync(dir)) return [];
