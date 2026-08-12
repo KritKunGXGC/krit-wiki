@@ -359,3 +359,21 @@ This is an append-only chronological log of all operations performed on this wik
 - อัปเดตกติกาชื่อไฟล์: AGENTS.md (2 จุด: Directory Structure + Ingestion Workflow) · notes/README.md · notes/ingested/README.md → `<Title>.md` (ไม่มีวันที่; กรณีชื่อชนให้ต่อท้าย suffix เช่น `-2`)
 - ไม่มีหน้า wiki ใดอ้างอิงชื่อไฟล์เหล่านี้ (อ้างแค่ระดับโฟลเดอร์) — ลิงก์ไม่พัง
 - ตรวจ: lint 58 หน้า / errors 0 / dead links 0 / orphans 0
+
+## [2026-08-12] content | Thai category folders + complete data in notes/ingested/ (ตามคำขอ)
+### 1. แยกโฟลเดอร์ไทย 5 หมวด (ย้าย 10 สำเนา)
+- `Obsidian และ PKM/` (3): Form Function Fun, How I use Folders, The Free Obsidian Journal
+- `AI/` (3): What is OpenClaw, Obsidian Agentic AI Workflow, Free AI Voice Generator (ElevenLabs)
+- `เรียนภาษาอังกฤษ/` (1): Note Taking & Research Assistant
+- `ซอฟต์แวร์และโปรแกรมมิ่ง/` (2): Every Free App, Every Programming Language
+- `แนวคิดและประวัติศาสตร์/` (1): Memex Clipping
+- แต่ละหมวดมี README.md ภาษาไทย (รายชื่อ + คำอธิบาย); `notes/ingested/README.md` อัปเดตตารางหมวดหมู่
+### 2. ข้อมูลครบ (ตามที่ผู้ใช้เลือก: metadata + เนื้อหา)
+- ขยายสำเนาให้ครอบคลุมทุกประเด็นของต้นฉบับ: Journal (~213→700+ คำ), How I use Folders (173→~550), OpenClaw (198→~600), Form Function Fun (288→~700), Note Taking (190→~600 ครบ 7 ด้าน), ElevenLabs (+ข้อสังเกต), Agentic (176→~450), Memex (63→~300 + header ครบ), Programming (+ตารางสรุป 12 ภาษา)
+- ทุกไฟล์: header ครบ (โดย/เผยแพร่/ต้นฉบับ/#ingested), cssclasses: notes-beauty คงเดิม, แท็ก `#ingested` คงเดิม
+- Free App ตรวจแล้วครบอยู่แล้ว (12 แอป ครบทุกหัวข้อ) — ไม่แก้
+### 3. อัปเดตอ้างอิง
+- `AGENTS.md`: กติกา `notes/ingested/` ระบุ Thai category subfolders (2 จุด)
+- `notes/README.md` + `notes/ingested/README.md`: อัปเดตโครงสร้างหมวดไทย
+- `wiki/Bases/Notes Library.base`: `folder_label` ใช้ `file.inFolder()` รองรับซับโฟลเดอร์ (สำเนาอ่าน/Daily/ส่วนตัว/Inbox)
+- ตรวจ: lint 58 หน้า / errors 0 / dead links 0 / orphans 0

@@ -10,7 +10,7 @@ The wiki is organized into the following workspace structure:
 
 - `raw/` - **Raw Sources**: A curated collection of immutable source documents (articles, papers, books, notes, transcripts, etc.). These are the source of truth and are never modified by the LLM.
 - `notes/` - **Personal Notes**: Free-form notes written directly by the user, for human reading. Not raw sources, not wiki content. AI agents should never edit, lint, restructure, or enforce schema on files here. Only read from here if the user explicitly asks you to reference or ingest something from it. When asked to ingest, the AI reads the note and creates wiki pages that reference it — the note itself stays untouched and is never rewritten or reformatted for machine readability.
-- `notes/ingested/` - **Ingested Reading Copies**: When the user requests an ingest of external content (URL, video, article, etc.), the AI saves a human-readable copy here as `<Title>.md` tagged `#ingested`, for the user's own reading. Adding new files here is part of the ingest workflow; existing files are never edited or deleted by the AI. (No date prefix in filenames — on name collision append a numeric suffix, e.g. `-2`.)
+- `notes/ingested/` - **Ingested Reading Copies**: When the user requests an ingest of external content (URL, video, article, etc.), the AI saves a human-readable copy here as `<Title>.md` tagged `#ingested`, for the user's own reading. Copies are grouped into **Thai category subfolders** (`Obsidian และ PKM/`, `AI/`, `เรียนภาษาอังกฤษ/`, `ซอฟต์แวร์และโปรแกรมมิ่ง/`, `แนวคิดและประวัติศาสตร์/`). Adding new files here is part of the ingest workflow; existing files are never edited or deleted by the AI. (No date prefix in filenames — on name collision append a numeric suffix, e.g. `-2`.)
 - `wiki/` - **Wiki Pages**: LLM-generated and maintained markdown files representing concepts, entities, themes, memory, and syntheses.
   - `wiki/concepts/`, `wiki/entities/`, `wiki/sources/`, `wiki/events/`, `wiki/syntheses/`, `wiki/memory/` - the six page categories.
   - `wiki/MOCs/` - **Maps of Content**: navigation hubs that index related pages by topic.
@@ -73,7 +73,7 @@ When the user requests to ingest a raw file (e.g., `raw/source_doc.md`):
    - Write new pages or update existing ones using the surgical editing tools (`replace` or `write_file`).
    - Ensure every page includes appropriate YAML frontmatter, structured headings, robust summaries, and proper outbound links to other related concepts.
    - Mention and cite the raw source under a `## Sources` section at the bottom of the page.
-   - When ingesting **external** content (URL, video, article — anything not already in the vault), also save a human-readable copy to `notes/ingested/` as `<Title>.md` tagged `#ingested`, so the user has a pleasant reading copy. Cite this copy alongside the original in the page's `sources:` field.
+   - When ingesting **external** content (URL, video, article — anything not already in the vault), also save a human-readable copy to `notes/ingested/` as `<Title>.md` tagged `#ingested` in the matching Thai category subfolder, so the user has a pleasant reading copy. Cite this copy alongside the original in the page's `sources:` field.
 4. **Update Index (`index.md`)**:
    - Add new entries to their respective category.
    - Keep summaries updated.

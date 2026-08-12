@@ -4,7 +4,7 @@ filters:
     - file.ext == "md"
     - file.basename != "README"
 formulas:
-  folder_label: if(file.folder == "notes", "โน้ตของฉัน", if(file.folder == "notes/daily", "Daily", if(file.folder == "notes/ingested", "สำเนาอ่าน", "Inbox")))
+  folder_label: if(file.inFolder("notes/ingested"), "สำเนาอ่าน", if(file.inFolder("notes/daily"), "Daily", if(file.inFolder("notes/private"), "ส่วนตัว", if(file.folder == "notes", "โน้ตของฉัน", "Inbox"))))
 properties:
   formula.folder_label:
     displayName: ที่มา
