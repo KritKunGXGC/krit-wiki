@@ -3,3 +3,6 @@
 
 # Obsidian UI state (rewritten on every window move / layout change)
 .obsidian/workspace.json
+
+# Recent Files plugin runtime data (rewritten constantly)
+.obsidian/plugins/recent-files-obsidian/data.json

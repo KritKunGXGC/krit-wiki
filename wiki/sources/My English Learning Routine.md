@@ -32,5 +32,5 @@ last_updated: 2026-08-12
 โน้ตนี้เป็นตัวอย่าง workflow "personal note → wiki source": เนื้อหาต้นฉบับอยู่ใน `notes/` (AI ห้ามแตะ) และหน้า wiki นี้คือตัวแทน (representation) ที่เชื่อมโน้ตเข้ากับกราฟความรู้ โดยอ้างอิงกลับใน frontmatter `sources`
 
 ## Sources
-- `notes/My English Learning Routine.md` (personal note — AI อ่านได้เฉพาะเมื่อผู้ใช้ขอ)
+- `notes/private/My English Learning Routine.md` (personal note — AI อ่านได้เฉพาะเมื่อผู้ใช้ขอ)
 - ดูเพิ่ม: [[wiki/syntheses/English Learning Guide|English Learning Guide]]

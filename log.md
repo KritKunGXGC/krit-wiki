@@ -377,3 +377,10 @@ This is an append-only chronological log of all operations performed on this wik
 - `notes/README.md` + `notes/ingested/README.md`: อัปเดตโครงสร้างหมวดไทย
 - `wiki/Bases/Notes Library.base`: `folder_label` ใช้ `file.inFolder()` รองรับซับโฟลเดอร์ (สำเนาอ่าน/Daily/ส่วนตัว/Inbox)
 - ตรวจ: lint 58 หน้า / errors 0 / dead links 0 / orphans 0
+
+## [2026-08-12] fix | Bug audit (สแกนทั่ว vault) + แก้ 3 จุด
+- **🔴 iconize:** `.obsidian/community-plugins.json` ยัง enable `obsidian-iconize` แต่โฟลเดอร์ plugin + data.json หายไปทั้งอัน (กู้คืนได้จาก git commit 8dc86c5 แต่ผู้ใช้เลือก **ปิดใช้งาน** — ลบออกจาก community-plugins.json 27→26 ตัว) — เอกสารที่กล่าวถึง iconize ทั้งหมดเป็นประวัติ/เนื้อหาวิดีโอ ไม่ต้องแก้
+- **🟡 wiki/sources/My English Learning Routine.md:** บรรทัด Sources ยังอ้าง `notes/My English Learning Routine.md` (path เก่า) → แก้เป็น `notes/private/...`
+- **🟡 recent-files-obsidian/data.json:** runtime data ที่ถูกเขียนตลอด → `git rm --cached` + เพิ่มใน .gitignore (git status สะอาด ไม่มี noise)
+- **False positives ที่ตรวจแล้วไม่ใช่บั๊ก:** ลิงก์ตัวอย่างใน AGENTS.md/log/raw/_system templates (by design), wikilinks ใน notes/ + raw/ (resolve ด้วย basename ใน Obsidian — lint ข้ามโดยตั้งใจ), 12 warnings ของ lint (pattern ตั้งใจ: events ลงวันที่ + README)
+- ตรวจ: lint 58 หน้า / errors 0 / .obsidian JSON ทั้งหมด valid / git status สะอาด
