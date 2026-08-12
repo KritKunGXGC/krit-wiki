@@ -124,6 +124,4 @@ The CEFR scale is the foundation for how language proficiency is measured and ho
 
 บัญชี Google
 
-KRITKUNG Magin
-
-kritkungmagin@gmail.com
+[REDACTED — personal info removed 2026-08-12, see log.md]
