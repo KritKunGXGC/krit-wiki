@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Clone Quartz (pinned)
         run: git clone --depth 1 --branch v4.5.2 https://github.com/jackyzha0/quartz.git quartz
