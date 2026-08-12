@@ -5,7 +5,7 @@
  * วิธีใช้ (จาก root ของ vault):
  *   node _system/lint.js
  *
- * ตรวจสอบ 12 อย่าง:
+ * ตรวจสอบ 14 อย่าง:
  *   [1]  Dead wikilinks (ลิงก์ที่ resolve ไม่ได้)
  *   [2]  Orphan pages (หน้าใน wiki/ ที่ไม่มีลิงก์ขาเข้า)
  *   [3]  Frontmatter schema (title, category, tags, sources, last_updated)
@@ -19,7 +19,8 @@
  *   [11] (WARN) ชื่อไฟล์ไม่ตรงกับ frontmatter title
  *   [12] Plugin consistency — ตัวที่ enable ต้องมีโฟลเดอร์+manifest.json, data.json ต้อง valid JSON; ตัวที่ติดตั้งแต่ไม่ enable = warn
  *   [13] notes/ path integrity — path ที่อ้าง `notes/...` จากไฟล์ที่ AI ดูแล (wiki/, index.md) ต้อง resolve ถึงไฟล์/โฟลเดอร์จริง
- *   [14] ข้ามโฟลเดอร์ `notes/` ทั้งหมด (พื้นที่ส่วนตัวของผู้ใช้ — ไม่ lint เนื้อหาใน notes/)
+ *   [14] Base files — validate wiki/Bases/*.base (Obsidian Bases YAML structure: views required, unknown top-level keys flagged)
+ *   ข้ามโฟลเดอร์ `notes/` และ `_archive/` (พื้นที่ส่วนตัว/ไฟล์เก็บ — ไม่ lint เนื้อหา)
  */
 const fs = require('fs');
 const path = require('path');
@@ -43,7 +44,14 @@ function walk(dir, want = ['.md', '.canvas', '.base']) {
 const allMd = walk('wiki').filter(f => f.endsWith('.md'));
 const allCanvas = walk('.').filter(f => f.endsWith('.canvas'));
 const wikiPages = new Set(allMd);
-const rootPages = new Set(walk('.').filter(f => f.endsWith('.md') || f.endsWith('.canvas') || f.endsWith('.base')));
+// Root pages resolvable from wikilinks: wiki/ (all), notes/ (.md), and root-level .md only.
+// raw/, _system/, .agents/, .obsidian/, .claude/ are deliberately excluded — a wikilink from a
+// wiki/ page to outside wiki/ must be flagged as DEAD LINK, not resolve silently.
+const rootPages = new Set([
+  ...walk('wiki').filter(f => f.endsWith('.md') || f.endsWith('.canvas') || f.endsWith('.base')),
+  ...walk('notes').filter(f => f.endsWith('.md')),
+  'index.md', 'log.md', 'AGENTS.md',
+]);
 const rawFiles = walk('raw').filter(f => f.endsWith('.md') && !path.basename(f).toLowerCase().startsWith('readme'));
 
 const errors = [];
@@ -232,7 +240,28 @@ for (const f of maintainedFiles) {
   }
 }
 
-errors.push(...pluginErrors, ...notesRefErrors);
+// [14] .base files (Obsidian Bases) — lightweight YAML structure validation
+// NOTE: .base files are YAML, not JSON (unlike .canvas). Validated structurally:
+//   - non-empty, has top-level keys
+//   - `views:` required (Bases spec) and must be a list of `- type:` entries
+//   - top-level keys limited to {filters, formulas, properties, views} (typo safety net)
+const baseErrors = [];
+const BASE_KEYS = new Set(['filters', 'formulas', 'properties', 'views']);
+for (const b of walk('wiki').filter(f => f.endsWith('.base'))) {
+  const c = read(b);
+  if (c == null || c.trim() === '') { baseErrors.push(`BASE EMPTY: ${b}`); continue; }
+  const topKeys = [...c.matchAll(/^([A-Za-z_][A-Za-z0-9_-]*):/gm)].map(m => m[1]);
+  if (!topKeys.length) { baseErrors.push(`BASE NO TOP-LEVEL KEYS: ${b}`); continue; }
+  const unknown = topKeys.filter(k => !BASE_KEYS.has(k));
+  if (unknown.length) baseErrors.push(`BASE UNKNOWN KEYS (${unknown.join(', ')}): ${b}`);
+  if (!topKeys.includes('views')) {
+    baseErrors.push(`BASE MISSING views (required): ${b}`);
+  } else if (!/^views:[\s\S]*?^\s+- type:/m.test(c)) {
+    baseErrors.push(`BASE views NOT A LIST (expect '- type:' entries): ${b}`);
+  }
+}
+
+errors.push(...pluginErrors, ...notesRefErrors, ...baseErrors);
 
 // ---- Report ----
 const dead = errors.filter(e => e.startsWith('DEAD'));
@@ -255,6 +284,7 @@ console.log(`[11] Title != file    : ${warnings.filter(w => w.startsWith('TITLE 
 console.log(`[8] Duplicate names   : ${warnings.filter(w => w.startsWith('DUP BASENAME')).length}`);
 console.log(`[12] Plugin consistency: ${pluginErrors.length}`);
 console.log(`[13] Notes paths      : ${notesRefErrors.length}`);
+console.log(`[14] Base files       : ${baseErrors.length}`);
 console.log('');
 if (orphans.length) { console.log('⚠️  Orphans:'); orphans.forEach(o => console.log(`    ${o}`)); }
 if (dead.length) { console.log('⚠️  Dead links:'); dead.forEach(e => console.log(`    ${e}`)); }

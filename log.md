@@ -398,3 +398,9 @@ This is an append-only chronological log of all operations performed on this wik
 - **Untrack `notes/`:** เพิ่ม `notes/` ใน `.gitignore` + `git rm -r --cached notes/` — ไฟล์ยังอยู่บนดิสก์ครบ (private by design — ไม่ควรถูก git ติดตามตั้งแต่แรก)
 - **Untrack `.obsidian/`:** เพิ่ม `.obsidian/` ใน `.gitignore` (แทนที่รายการย่อยเดิมทั้งหมด) + `git rm -r --cached .obsidian/` — plugin configs/workspace state เป็นของเฉพาะเครื่อง ไม่ต้องการ version control; ไฟล์ยังอยู่บนดิสก์ครบ
 - **บริบท:** ระหว่างเตรียมเปิด repo สาธารณะ — ก่อนหน้านี้ตรวจพบ RSA private key + API key ของ Local REST API ใน `.obsidian/plugins/obsidian-local-rest-api/data.json` (ทั้งใน working tree และ git history) → key ถูก rotate แล้วโดยผู้ใช้ (ลบ data.json → regenerate ใหม่), กำลังจะ rewrite git history ด้วย `git filter-repo` เพื่อลบ key เก่าออกจากทุก commit (ขั้นตอนแยก — ดู commit ถัดไป)
+
+## [2026-08-12] upgrade | Vault Doctor v4: +[14] Base validation + tightened dead-link resolution
+- **[14] Base files validation** — ตรวจ `wiki/Bases/*.base`: ไฟล์ .base เป็น **YAML ไม่ใช่ JSON** (ต่างจาก .canvas) จึง validate เชิงโครงสร้าง: ต้องไม่ว่าง, ต้องมี top-level keys, ต้องมี `views:` (required ตาม Bases spec) และเป็น list ของ `- type:` entries, top-level keys จำกัดที่ {filters, formulas, properties, views} (จับ typo ได้) — รายงานแถว `[14] Base files` ถัดจาก `[6] Canvas issues`
+- **Tightened dead-link resolution** — เดิม `rootPages` ใช้ `walk('.')` ทำให้ `raw/`, `_system/`, `.agents/`, `.obsidian/`, `.claude/` เข้ามาใน link resolution (ลิงก์จาก wiki/ ไปนอก wiki/ resolve เงียบๆ ไม่โดนจับ) → จำกัดเหลือ **wiki/ (ทั้งหมด) + notes/ (.md) + root .md (index/log/AGENTS)** เท่านั้น — ลิงก์ไป raw//_system/ ฯลฯ กลายเป็น DEAD LINK ตาม convention ของ vault
+- **Negative test ผ่าน:** สร้างไฟล์ชั่วคราวที่มี `[[raw/README]]` + `[[_system/TEMPLATE.md]]` → lint จับ DEAD LINK 2 อันจริง; ลบไฟล์แล้วกลับ 0
+- ตรวจ: lint 58 หน้า / errors 0 / [14]=0 / dead links 0 — ไม่มี violation เดิม (เป็นแค่ safety net ใหม่)
