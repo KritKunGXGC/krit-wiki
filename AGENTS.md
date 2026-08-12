@@ -12,6 +12,12 @@ The wiki is organized into the following workspace structure:
 - `notes/` - **Personal Notes**: Free-form notes written directly by the user, for human reading. Not raw sources, not wiki content. AI agents should never edit, lint, restructure, or enforce schema on files here. Only read from here if the user explicitly asks you to reference or ingest something from it. When asked to ingest, the AI reads the note and creates wiki pages that reference it — the note itself stays untouched and is never rewritten or reformatted for machine readability.
 - `notes/ingested/` - **Ingested Reading Copies**: When the user requests an ingest of external content (URL, video, article, etc.), the AI saves a human-readable copy here as `YYYY-MM-DD <Title>.md` tagged `#ingested`, for the user's own reading. Adding new files here is part of the ingest workflow; existing files are never edited or deleted by the AI.
 - `wiki/` - **Wiki Pages**: LLM-generated and maintained markdown files representing concepts, entities, themes, memory, and syntheses.
+  - `wiki/concepts/`, `wiki/entities/`, `wiki/sources/`, `wiki/events/`, `wiki/syntheses/`, `wiki/memory/` - the six page categories.
+  - `wiki/MOCs/` - **Maps of Content**: navigation hubs that index related pages by topic.
+  - `wiki/Bases/` - **Obsidian Bases**: database view files (`.base`) over wiki and notes.
+  - `wiki/canvases/` - **Canvases**: visual canvas diagrams (e.g. app overviews).
+- `_system/` - **Operational System**: `lint.js`, `TEMPLATE*` files, and instructions. Never listed in `index.md`.
+- `_archive/` - **Archive**: files with no active links (e.g. old drawings). Never linted.
 - `index.md` - **Content Index**: A content-oriented, categorized catalog of all pages in the `wiki/` directory. Updated on every ingest.
 - `log.md` - **Chronological Log**: An append-only record of all wiki events (ingest, query, lint, edit) with standard timestamps and activity type.
 - `AGENTS.md` - **System Schema**: This file, containing structural mandates and operational rules.

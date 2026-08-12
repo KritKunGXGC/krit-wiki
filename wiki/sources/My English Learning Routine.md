@@ -6,7 +6,7 @@ tags:
   - english-learning
   - personal
   - routine
-sources: ["notes/My English Learning Routine.md"]
+sources: ["notes/private/My English Learning Routine.md"]
 last_updated: 2026-08-12
 ---
 

@@ -27,6 +27,9 @@ This folder is organized into categories. Each `.md` file represents a knowledge
 | `memory/` | Memory | User preferences, configurations, and knowledge states |
 | `sources/` | Sources | Source-driven references (clippings, transcripts) |
 | `syntheses/` | Syntheses | Combined insights, reports, and generated summaries |
+| `MOCs/` | MOCs | Maps of Content — navigation hubs (e.g. `MOC Hub.md`, `AI Audio MOC.md`) |
+| `Bases/` | Bases | Obsidian database views (`.base` files: Wiki Library, Notes Library) |
+| `canvases/` | Canvases | Visual canvas diagrams (e.g. `Every Free App You Actually Need.canvas`) |
 
 > 💡 **Tip**: Links between pages use `wiki/`-prefixed paths so they resolve correctly from anywhere in the vault.
 

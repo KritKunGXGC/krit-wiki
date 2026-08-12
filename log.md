@@ -344,3 +344,11 @@ This is an append-only chronological log of all operations performed on this wik
 - แก้ frontmatter title ให้ตรงชื่อไฟล์ 5 หน้า: Obsidian & PKM MOC→Obsidian & PKM, Form Function Fun, Obsidian Agentic AI Workflow, Free Obsidian Journal (ลบ trailing period), CEFR
 - `wiki/events/README.md` **ไม่** rename (lint ออกแบบให้ README = folder index โดยเฉพาะ — มี exemption date/title); เหลือ warnings เฉพาะ pattern ตั้งใจ (11 อัน = events แบบลงวันที่ + 1 dup basename readme)
 - ตรวจ: lint 58 หน้า / errors 0 / warnings 12; dead links 0; orphans 0
+
+## [2026-08-12] structure | Folder tidy-up (ตามคำขอ "จัดโฟเดอร์")
+- ย้าย `GEMINI.md` (schema เก่า ถูก AGENTS.md ทดแทน, ไม่มีลิงก์ขาเข้า) → `_system/GEMINI.md` — ลดความรกที่ root
+- อัปเดต `AGENTS.md` §Directory Structure: บันทึกโฟลเดอร์ที่มีอยู่จริงแต่ไม่ได้เขียนไว้ (`wiki/MOCs/`, `wiki/Bases/`, `wiki/canvases/`, `_system/`, `_archive/`)
+- อัปเดต `wiki/README.md` structure table: เพิ่มแถว `MOCs/`, `Bases/`, `canvases/`
+- (ตามที่ผู้ใช้เลือก) สร้าง `notes/private/` และย้ายโน้ต 2 อัน: `My English Learning Routine.md` + `2026-08-12 AI Session Briefing.md` — โน้ตส่วนตัวอยู่ด้วยกัน; อัปเดต `sources:` ใน `wiki/sources/My English Learning Routine.md` → `notes/private/...` + ปรับประโยคใน notes/README.md
+- ผู้ใช้เลือก **ไม่** ซ่อน dot-folders (`.agents/`, `.claude/`, `.smart-env/`) ใน file explorer — คงไว้แบบเดิม
+- ตรวจ: lint 58 หน้า / errors 0 / dead links 0 / orphans 0
