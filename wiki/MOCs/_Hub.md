@@ -35,7 +35,43 @@ last_updated: 2026-08-12
 
 - [[wiki/events/README|Events]] — ไทม์ไลน์เหตุการณ์ของ vault และการเผยแพร่เนื้อหา
 - [[wiki/memory/System Preferences & Agentic Memory|System Preferences & Agentic Memory]] — ภาษา/โทน/บริบทสำหรับ agentic memory
+- [[wiki/memory/Vault Manual|Vault Manual]] — คู่มือผู้ใช้ (capture, ingest, lint, plugins)
 - [[index|Knowledge Hub (index.md)]] — แดชบอร์ด Dataview ที่ root ของ vault
+
+## 📈 สิ่งที่กำลังเติบโต (อัตโนมัติ)
+
+### เพิ่งอัปเดตล่าสุด
+
+```dataview
+LIST
+FROM "wiki"
+SORT last_updated DESC
+LIMIT 5
+```
+
+### เหตุการณ์ล่าสุด
+
+```dataview
+TABLE WITHOUT ID
+  dateformat(date(date), "yyyy-MM-dd") AS "วันที่",
+  file.link AS "เหตุการณ์"
+FROM "wiki/events"
+WHERE date
+SORT date(date) DESC
+LIMIT 4
+```
+
+### โน้ตส่วนตัวล่าสุด
+
+```dataview
+TABLE WITHOUT ID
+  file.link AS "โน้ต",
+  file.folder AS "ที่อยู่"
+FROM "notes"
+WHERE !contains(file.name, "README")
+SORT file.mtime DESC
+LIMIT 5
+```
 
 ---
 *สร้างขึ้นเพื่อให้การนำทาง vault เริ่มจากจุดเดียว — อัปเดตเมื่อมี MOC หรือ synthesis ใหม่*

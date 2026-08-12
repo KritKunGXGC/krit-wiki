@@ -1,29 +1,49 @@
 filters:
   and:
     - file.inFolder("notes")
-    - 'file.ext == "md"'
-    - 'file.basename != "README"'
-
+    - file.ext == "md"
+    - file.basename != "README"
 formulas:
-  folder_label: 'if(file.folder == "notes", "โน้ตของฉัน", if(file.folder == "notes/daily", "Daily", if(file.folder == "notes/ingested", "สำเนาอ่าน", "Inbox")))'
-
+  folder_label: if(file.folder == "notes", "โน้ตของฉัน", if(file.folder == "notes/daily", "Daily", if(file.folder == "notes/ingested", "สำเนาอ่าน", "Inbox")))
 properties:
   formula.folder_label:
-    displayName: "ที่มา"
+    displayName: ที่มา
   file.folder:
-    displayName: "โฟลเดอร์"
-
+    displayName: โฟลเดอร์
 views:
   - type: table
-    name: "โน้ตทั้งหมด"
+    name: โน้ตทั้งหมด
     order:
       - file.name
       - formula.folder_label
       - file.mtime
-
   - type: cards
-    name: "การ์ดโน้ต"
+    name: การ์ดโน้ต
     order:
       - file.name
       - formula.folder_label
       - file.folder
+  - type: table
+    name: สำเนาอ่าน (#ingested)
+    filters:
+      and:
+        - file.hasTag("ingested")
+    order:
+      - file.name
+      - file.mtime
+  - type: table
+    name: Daily (#journal)
+    filters:
+      and:
+        - file.hasTag("journal")
+    order:
+      - file.name
+      - file.mtime
+  - type: table
+    name: Inbox (#inbox)
+    filters:
+      and:
+        - file.hasTag("inbox")
+    order:
+      - file.name
+      - file.mtime

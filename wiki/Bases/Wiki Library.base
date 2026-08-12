@@ -1,24 +1,21 @@
 filters:
   and:
     - file.inFolder("wiki")
-    - 'file.ext == "md"'
-    - 'file.basename != "README"'
-
+    - file.ext == "md"
+    - file.basename != "README"
 formulas:
-  updated_days: 'if(last_updated, (today() - date(last_updated)).days, "")'
-  event_date: 'if(date, date(date).format("YYYY-MM-DD"), "")'
-
+  updated_days: if(last_updated, (today() - date(last_updated)).days, "")
+  event_date: if(date, date(date).format("YYYY-MM-DD"), "")
 properties:
   category:
-    displayName: "หมวด"
+    displayName: หมวด
   formula.updated_days:
-    displayName: "อายุ (วัน)"
+    displayName: อายุ (วัน)
   formula.event_date:
-    displayName: "วันที่"
-
+    displayName: วันที่
 views:
   - type: table
-    name: "ทุกหน้า"
+    name: ทุกหน้า
     groupBy:
       property: category
       direction: ASC
@@ -27,22 +24,60 @@ views:
       - category
       - tags
       - last_updated
-
   - type: table
-    name: "เพิ่งอัปเดต"
-    limit: 15
+    name: เพิ่งอัปเดต
     order:
       - file.name
       - category
       - formula.updated_days
-
+    limit: 15
   - type: table
-    name: "Timeline (Events)"
+    name: Timeline (Events)
     filters:
       and:
-        - 'category == "Event"'
-        - 'date != ""'
+        - category == "Event"
+        - date != ""
     order:
       - formula.event_date
       - file.name
       - tags
+  - type: table
+    name: English Learning
+    filters:
+      and:
+        - file.hasTag("english-learning")
+    order:
+      - file.name
+      - category
+      - last_updated
+  - type: table
+    name: AI & Agentic
+    filters:
+      or:
+        - file.hasTag("agentic-ai")
+        - file.hasTag("ai-agents")
+    order:
+      - file.name
+      - category
+      - last_updated
+  - type: table
+    name: Obsidian & PKM
+    filters:
+      or:
+        - file.hasTag("obsidian")
+        - file.hasTag("pkm")
+    order:
+      - file.name
+      - category
+      - last_updated
+  - type: table
+    name: FOSS & Programming
+    filters:
+      or:
+        - file.hasTag("free-software")
+        - file.hasTag("open-source")
+        - file.hasTag("programming")
+    order:
+      - file.name
+      - category
+      - last_updated

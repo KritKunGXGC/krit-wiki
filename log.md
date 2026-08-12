@@ -322,3 +322,9 @@ This is an append-only chronological log of all operations performed on this wik
 - วิจัย docs ยืนยัน: `tp.date.now(format, offset, reference, reference_format)` ถูกต้อง; Bases schema (filters and/or/not, views type/name/limit/groupBy/filters/order, formulas Duration .days, properties displayName) ถูกต้อง; obsidian-git local-only backup ทำงาน headless ได้ (autoSaveInterval 10, commitMessage ตั้งแล้ว, identity ตั้งแล้ว)
 - เพิ่ม `.gitignore`: ข้าม `.smart-env/` + `.obsidian/workspace.json` (กัน noise commits จาก runtime data)
 - สร้าง `notes/2026-08-12 AI Session Briefing.md` — สรุปสำหรับผู้ใช้กลับมา พร้อม checklist
+
+## [2026-08-12] improvement | 3 ไอเดียต่อจาก briefing
+1. **Ingest เนื้อหาใหม่** — ตรวจ raw/ + notes/inbox แล้ว: ไม่มีเนื้อหาใหม่ให้ ingest (10/10 sources ingest ครบ, inbox ว่าง) — รอ source ใหม่จากผู้ใช้ (URL/ไฟล์) ระบบใหม่พร้อมแล้ว
+2. **Bases view ตามแท็ก** — `Wiki Library.base` เพิ่ม 4 views: English Learning (#english-learning), AI & Agentic (#agentic-ai/#ai-agents), Obsidian & PKM (#obsidian/#pkm), FOSS & Programming (#free-software/#open-source/#programming); `Notes Library.base` เพิ่ม 3 views: สำเนาอ่าน (#ingested), Daily (#journal), Inbox (#inbox)
+3. **MOC Hub × "สิ่งที่กำลังเติบโต"** — เพิ่มส่วน Dataview อัตโนมัติใน `wiki/MOCs/_Hub.md`: เพิ่งอัปเดตล่าสุด, เหตุการณ์ล่าสุด, โน้ตส่วนตัวล่าสุด + ลิงก์ Vault Manual
+- ปรับ `_system/TEMPLATE Quick Capture.md` เพิ่ม `tags: [inbox]` (ให้ #inbox view กรองเจอ)

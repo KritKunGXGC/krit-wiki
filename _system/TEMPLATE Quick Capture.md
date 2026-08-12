@@ -1,6 +1,8 @@
 ---
 created: <% tp.date.now("YYYY-MM-DD HH:mm") %>
 cssclasses: notes-beauty
+tags:
+  - inbox
 ---
 
 # 📥 Capture — <% tp.date.now("YYYY-MM-DD HH:mm") %>
